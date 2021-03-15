@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double MoyaVersionNumber;
-FOUNDATION_EXPORT const unsigned char MoyaVersionString[];
+FOUNDATION_EXPORT double DropDownVersionNumber;
+FOUNDATION_EXPORT const unsigned char DropDownVersionString[];
 
