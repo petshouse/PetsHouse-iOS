@@ -13,6 +13,6 @@ pod 'Kingfisher', '~> 5.0'
 pod 'SnapKit', '~> 5.0.0'
 pod 'Then'
 pod 'RxDataSources', '~> 4.0'
-pod 'DropDown', '2.3.2'
+pod 'DropDown'
 
 end
