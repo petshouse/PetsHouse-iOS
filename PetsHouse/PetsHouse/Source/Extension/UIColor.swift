@@ -13,10 +13,10 @@ extension UIColor {
     }
     
     static var mainColor: UIColor {
-        return rgb(red: 255, green: 204, blue: 153, alpha: 1)
+        return rgb(red: 255, green: 153, blue: 204, alpha: 1)
     }
     
     static var subColor: UIColor {
-        return rgb(red: 255, green: 140, blue: 157, alpha: 1)
+        return rgb(red: 255, green: 157, blue: 140, alpha: 1)
     }
 }
