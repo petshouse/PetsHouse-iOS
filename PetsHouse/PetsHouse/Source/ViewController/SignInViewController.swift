@@ -31,15 +31,13 @@ class SignInViewController: UIViewController {
     private let emailTxtField = UITextField().then {
         $0.placeholder = "email"
         $0.font = UIFont(name: "BMJUA", size: 25)
-        $0.layer.cornerRadius = 25
-        $0.layer.borderColor = .init(red: 051, green: 051, blue: 051, alpha: 1)
+        $0.layer.cornerRadius = 15
         $0.backgroundColor = .white
     }
     private let passwordTxtField = UITextField().then {
         $0.placeholder = "password"
         $0.font = UIFont(name: "BMJUA", size: 25)
         $0.layer.cornerRadius = 25
-        $0.layer.borderColor = .init(red: 051, green: 051, blue: 051, alpha: 1)
         $0.backgroundColor = .white
     }
     private let signInBtn = UIButton().then {
@@ -47,19 +45,72 @@ class SignInViewController: UIViewController {
         $0.backgroundColor = .mainColor
         $0.setTitle("로그인", for: .normal)
         $0.setTitleColor(.white, for: .normal)
-        $0.layer.cornerRadius = 25
+        $0.layer.cornerRadius = 15
     }
     private let signUpBtn = UIButton().then {
         $0.clipsToBounds = true
         $0.setTitle("계정이 없으신가요? 회원가입 하기", for: .normal)
         $0.setTitleColor(.black, for: .normal)
+        $0.titleLabel?.font = UIFont(name: "BMJUA", size: 10)
     }
     
     
+    //Constantraint
+    func constraint() {
+        logoView.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view)
+            make.top.equalTo(view.frame.height/5)
+            make.width.height.equalTo(220)
+        }
+        emailLbl.snp.makeConstraints { (make) in
+            make.top.equalTo(logoView.snp.bottom).offset(80)
+            make.centerX.equalTo(view)
+            make.leading.equalTo(30)
+            make.trailing.equalTo(-50)
+        }
+        emailTxtField.snp.makeConstraints { (make) in
+            make.top.equalTo(emailLbl.snp.bottom).offset(20)
+            make.centerX.equalTo(view)
+            make.leading.equalTo(30)
+            make.trailing.equalTo(-30)
+        }
+        passwordLbl.snp.makeConstraints{ (make) in
+            make.top.equalTo(emailTxtField.snp.bottom).offset(40)
+            make.centerX.equalTo(view)
+            make.leading.equalTo(30)
+            make.trailing.equalTo(-30)
+        }
+        passwordTxtField.snp.makeConstraints { (make) in
+            make.top.equalTo(passwordLbl.snp.bottom).offset(20)
+            make.centerX.equalTo(view)
+            make.leading.equalTo(30)
+            make.trailing.equalTo(-30)
+        }
+        signInBtn.snp.makeConstraints { (make) in
+            make.top.equalTo(passwordTxtField.snp.bottom).offset(30)
+            make.centerX.equalTo(view)
+            make.leading.equalTo(30)
+            make.trailing.equalTo(-30)
+        }
+        signUpBtn.snp.makeConstraints { (make) in
+            make.top.equalTo(signInBtn.snp.bottom).offset(10)
+            make.centerX.equalTo(view)
+        }
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        view.addSubview(logoView)
+        view.addSubview(emailLbl)
+        view.addSubview(emailTxtField)
+        view.addSubview(passwordLbl)
+        view.addSubview(passwordTxtField)
+        view.addSubview(signInBtn)
+        view.addSubview(signUpBtn)
+        
+        constraint()
     }
     
 
