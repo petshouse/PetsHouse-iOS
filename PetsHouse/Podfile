@@ -15,5 +15,7 @@ pod 'Then'
 pod 'RxDataSources', '~> 4.0'
 pod 'DropDown'
 pod 'TKRubberPageControl'
+pod 'Moya', '~> 14.0'
+pod 'Moya/RxSwift', '~> 14.0'
 
 end
