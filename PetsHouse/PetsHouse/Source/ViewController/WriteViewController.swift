@@ -19,7 +19,9 @@ class WriteViewController: UIViewController {
         $0.clipsToBounds = true
     }
     private let titleLbl = UILabel()
-    
+    private let locationDropDown = DropDown().then {
+        $0.layer.borderColor = UIColor.black.cgColor
+    }
     private let writeTxtView = UITextView()
     private let animalImage = UIImageView()
     private let photoImage = UIImageView().then {
@@ -34,14 +36,76 @@ class WriteViewController: UIViewController {
         $0.clipsToBounds = true
         $0.imageView?.backgroundColor = .white
         $0.setImage(UIImage(named: "Main_Logo"), for: UIControl.State.normal)
-
+    }
+    private let cameraLbl = UILabel().then {
+        $0.text = "사진 촬영하기"
+        $0.textColor = .black
+        $0.font = UIFont(name: "BMJUA", size: 20)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        view.addSubview(userImage)
+        view.addSubview(titleLbl)
+        view.addSubview(locationDropDown)
+        view.addSubview(writeTxtView)
+        view.addSubview(animalImage)
+        view.addSubview(photoImage)
+        view.addSubview(photoLbl)
+        view.addSubview(cameraBtn)
+        
+        constantraint()
     }
     
- 
+    func constantraint() {
+        userImage.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view)
+            make.top.equalTo(view.frame.height/2)
+            make.leading.equalTo(30)
+        }
+        titleLbl.snp.makeConstraints{ (make) in
+            make.centerX.equalTo(view)
+            make.top.equalTo(view.frame.height/2)
+            make.leading.equalTo(userImage.snp.right).offset(10)
+        }
+        locationDropDown.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view)
+            make.top.equalTo(userImage.snp.bottom).offset(20)
+            make.leading.equalTo(30)
+            make.trailing.equalTo(-50)
+        }
+        writeTxtView.snp.makeConstraints{ (make) in
+            make.centerX.equalTo(view)
+            make.top.equalTo(locationDropDown.snp.bottom).offset(20)
+            make.leading.equalTo(30)
+            make.trailing.equalTo(-30)
+        }
+        animalImage.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view)
+            make.top.equalTo(writeTxtView.snp.bottom).offset(15)
+            make.leading.equalTo(30)
+            make.trailing.equalTo(-30)
+        }
+        photoImage.snp.makeConstraints{ (make) in
+            make.centerX.equalTo(view)
+            make.top.equalTo(animalImage.snp.bottom).offset(13)
+            make.leading.equalTo(30)
+        }
+        photoLbl.snp.makeConstraints{ (make) in
+            make.centerX.equalTo(view)
+            make.leading.equalTo(photoImage.snp.right).offset(7)
+            make.top.equalTo(animalImage.snp.bottom).offset(13)
+        }
+        cameraLbl.snp.makeConstraints{ (make) in
+            make.centerX.equalTo(view)
+            make.bottom.equalTo(view.frame.height/2)
+        }
+        cameraBtn.snp.makeConstraints{ (make) in
+            make.centerX.equalTo(view)
+            make.bottom.equalTo(cameraLbl.snp.top).offset(10)
+        }
+    }
 }
