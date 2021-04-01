@@ -15,6 +15,8 @@ import DropDown
 
 class WriteViewController: UIViewController {
     
+    private let disposeBag = DisposeBag()
+    
     private let userImage = UIImageView().then {
         $0.clipsToBounds = true
     }
@@ -27,10 +29,9 @@ class WriteViewController: UIViewController {
     private let photoImage = UIImageView().then {
         $0.image = UIImage(named: "library")
     }
-    private let photoLbl = UILabel().then {
-        $0.text = "사진 선택하기"
-        $0.font = UIFont(name: "BMJUA", size: 20)
-        $0.textColor = .black
+    private let photoBtn = UIButton().then {
+        $0.setTitle("사진 선택하기", for: .normal)
+        $0.setTitleColor(.black, for: .normal)
     }
     private let cameraBtn = UIButton().then {
         $0.clipsToBounds = true
@@ -42,6 +43,8 @@ class WriteViewController: UIViewController {
         $0.textColor = .black
         $0.font = UIFont(name: "BMJUA", size: 20)
     }
+    
+    let imagePicker = UIImagePickerController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +57,7 @@ class WriteViewController: UIViewController {
         view.addSubview(writeTxtView)
         view.addSubview(animalImage)
         view.addSubview(photoImage)
-        view.addSubview(photoLbl)
+        view.addSubview(photoBtn)
         view.addSubview(cameraBtn)
         
         constantraint()
@@ -94,7 +97,7 @@ class WriteViewController: UIViewController {
             make.top.equalTo(animalImage.snp.bottom).offset(13)
             make.leading.equalTo(30)
         }
-        photoLbl.snp.makeConstraints{ (make) in
+        photoBtn.snp.makeConstraints{ (make) in
             make.centerX.equalTo(view)
             make.leading.equalTo(photoImage.snp.right).offset(7)
             make.top.equalTo(animalImage.snp.bottom).offset(13)
