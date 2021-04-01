@@ -44,13 +44,12 @@ class WriteViewController: UIViewController {
         $0.font = UIFont(name: "BMJUA", size: 20)
     }
     
-    let imagePicker = UIImagePickerController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+                
         view.addSubview(userImage)
         view.addSubview(titleLbl)
         view.addSubview(locationDropDown)
@@ -111,4 +110,34 @@ class WriteViewController: UIViewController {
             make.bottom.equalTo(cameraLbl.snp.top).offset(10)
         }
     }
+    func setUI() {
+        cameraBtn.rx.tap.subscribe(onNext: { _ in
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera
+            imagePicker.cameraDevice = .rear
+            self.present(imagePicker, animated: true, completion: nil)
+        }).disposed(by: disposeBag)
+        
+        photoBtn.rx.tap.subscribe(onNext: { _ in
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            self.present(imagePicker, animated: true, completion: nil)
+        }).disposed(by: disposeBag)
+    }
+
 }
+
+extension WriteViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            animalImage.image = image
+        }
+        dismiss(animated: true, completion: nil)
+    }
+}
+
