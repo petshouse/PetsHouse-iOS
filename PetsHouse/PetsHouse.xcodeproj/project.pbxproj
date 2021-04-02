@@ -15,9 +15,10 @@
 		9F7DCACB25F995CE00450A79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F7DCAC925F995CE00450A79 /* LaunchScreen.storyboard */; };
 		9F8403342611C10200F6973B /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8403332611C10200F6973B /* WriteViewController.swift */; };
 		9F8403CE2614195700F6973B /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8403CD2614195600F6973B /* TokenModel.swift */; };
+		9F84047D261567DF00F6973B /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F84047C261567DF00F6973B /* Networking.swift */; };
+		9F8404812615680100F6973B /* PetsHouseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8404802615680100F6973B /* PetsHouseAPI.swift */; };
 		9F8C16E7260B02C300F8D17B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C16E6260B02C300F8D17B /* SignInViewController.swift */; };
 		9FE4A0C02608DE6C00D668F0 /* TestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4A0BF2608DE6C00D668F0 /* TestService.swift */; };
-		9FE4A0C62608DE9600D668F0 /* TestNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4A0C52608DE9600D668F0 /* TestNetworking.swift */; };
 		9FE4A0C92608DEA400D668F0 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4A0C82608DEA400D668F0 /* ViewModelType.swift */; };
 		9FE4A0E02609CD6500D668F0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4A0DF2609CD6500D668F0 /* SignUpViewController.swift */; };
 		9FE4A0E8260A014F00D668F0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4A0E7260A014F00D668F0 /* UIColor.swift */; };
@@ -33,9 +34,10 @@
 		9F7DCACC25F995CE00450A79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F8403332611C10200F6973B /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		9F8403CD2614195600F6973B /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
+		9F84047C261567DF00F6973B /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		9F8404802615680100F6973B /* PetsHouseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsHouseAPI.swift; sourceTree = "<group>"; };
 		9F8C16E6260B02C300F8D17B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9FE4A0BF2608DE6C00D668F0 /* TestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestService.swift; sourceTree = "<group>"; };
-		9FE4A0C52608DE9600D668F0 /* TestNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNetworking.swift; sourceTree = "<group>"; };
 		9FE4A0C82608DEA400D668F0 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		9FE4A0DF2609CD6500D668F0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9FE4A0E32609FDC500D668F0 /* BMJUA_otf.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMJUA_otf.otf; sourceTree = "<group>"; };
@@ -139,7 +141,8 @@
 		9FE4A0BB2608DDBC00D668F0 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				9FE4A0C52608DE9600D668F0 /* TestNetworking.swift */,
+				9F84047C261567DF00F6973B /* Networking.swift */,
+				9F8404802615680100F6973B /* PetsHouseAPI.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -316,11 +319,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FE4A0C62608DE9600D668F0 /* TestNetworking.swift in Sources */,
+				9F84047D261567DF00F6973B /* Networking.swift in Sources */,
 				9F8403CE2614195700F6973B /* TokenModel.swift in Sources */,
 				9FE4A0E02609CD6500D668F0 /* SignUpViewController.swift in Sources */,
 				9FE4A0C02608DE6C00D668F0 /* TestService.swift in Sources */,
 				9FE4A0E8260A014F00D668F0 /* UIColor.swift in Sources */,
+				9F8404812615680100F6973B /* PetsHouseAPI.swift in Sources */,
 				9F8C16E7260B02C300F8D17B /* SignInViewController.swift in Sources */,
 				9F7DCABF25F995CA00450A79 /* AppDelegate.swift in Sources */,
 				9F7DCAC125F995CA00450A79 /* SceneDelegate.swift in Sources */,

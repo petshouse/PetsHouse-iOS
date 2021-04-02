@@ -115,7 +115,6 @@ class WriteViewController: UIViewController {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = .camera
-            imagePicker.cameraDevice = .rear
             self.present(imagePicker, animated: true, completion: nil)
         }).disposed(by: disposeBag)
         
