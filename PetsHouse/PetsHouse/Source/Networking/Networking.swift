@@ -13,5 +13,6 @@ enum Network: Int, Error {
     case forbidden = 403
     case notFound = 404
     case conflict = 409
+    case preconditionFailed = 412
     case fail
 }
