@@ -14,6 +14,9 @@ import Then
 
 class SignUpViewController: UIViewController {
     
+    private let disposeBag = DisposeBag()
+    private let viewModel = SignUpViewModel()
+    
     //UI
     private let logoView = UIImageView().then {
         $0.image = UIImage(named: "Logo with text")
@@ -75,8 +78,20 @@ class SignUpViewController: UIViewController {
         $0.setTitleColor(.black, for: .normal)
     }
     
+    func bindViewModel() {
+        let input = SignUpViewModel.Input(nickname: nicknameTxtField.rx.text.orEmpty.asDriver(),
+                                          email: emailTxtField.rx.text.orEmpty.asDriver(),
+                                          password: passwordTxtField.rx.text.orEmpty.asDriver(),
+                                          doneTap: signUpBtn.rx.tap.asDriver())
+        let output = viewModel.transform(input: input)
+        
+        output.isEnable.drive(signUpBtn.rx.isEnabled).disposed(by: disposeBag)
+        output.result.emit(onNext: { [unowned self] text in alert(text)},
+                           onCompleted: { [unowned self] in navigationController?.popViewController(animated: true)}).disposed(by: disposeBag)
+    }
+    
     //Constantraint
-    func constantraint() {
+    private func constantraint() {
         logoView.snp.makeConstraints { (make) in
             make.centerX.equalTo(view)
             make.top.equalTo(view.frame.height/5)
