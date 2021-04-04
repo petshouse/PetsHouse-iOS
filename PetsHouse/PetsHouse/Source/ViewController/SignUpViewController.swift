@@ -78,6 +78,24 @@ class SignUpViewController: UIViewController {
         $0.setTitleColor(.black, for: .normal)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        
+        view.addSubview(logoView)
+        view.addSubview(nicknameLbl)
+        view.addSubview(nicknameTxtField)
+        view.addSubview(emailLbl)
+        view.addSubview(emailTxtField)
+        view.addSubview(passwordLbl)
+        view.addSubview(passwordTxtField)
+        view.addSubview(signInBtn)
+        view.addSubview(signUpBtn)
+        
+        constantraint()
+        bindViewModel()
+    }
+    
     func bindViewModel() {
         let input = SignUpViewModel.Input(nickname: nicknameTxtField.rx.text.orEmpty.asDriver(),
                                           email: emailTxtField.rx.text.orEmpty.asDriver(),
@@ -149,20 +167,5 @@ class SignUpViewController: UIViewController {
     
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        view.addSubview(logoView)
-        view.addSubview(nicknameLbl)
-        view.addSubview(nicknameTxtField)
-        view.addSubview(emailLbl)
-        view.addSubview(emailTxtField)
-        view.addSubview(passwordLbl)
-        view.addSubview(passwordTxtField)
-        view.addSubview(signInBtn)
-        view.addSubview(signUpBtn)
-        
-        constantraint()
-    }
+
 }
