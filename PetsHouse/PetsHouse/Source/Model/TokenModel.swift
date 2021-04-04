@@ -7,9 +7,7 @@
 
 import Foundation
 
-struct TokenModel {
-    enum token {
-        case accessToken
-        case refreshToken
-    }
+struct TokenModel: Codable {
+    let accessToken: String
+    let refreshToken: String
 }
