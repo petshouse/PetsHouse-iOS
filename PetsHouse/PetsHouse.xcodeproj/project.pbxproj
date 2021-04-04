@@ -19,6 +19,9 @@
 		9F8404812615680100F6973B /* PetsHouseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8404802615680100F6973B /* PetsHouseAPI.swift */; };
 		9F879CAD26172479006FD55E /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F879CAC26172479006FD55E /* SignUpViewModel.swift */; };
 		9F879CB02617253B006FD55E /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F879CAF2617253B006FD55E /* Service.swift */; };
+		9F879CB526172E37006FD55E /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F879CB426172E37006FD55E /* TokenManager.swift */; };
+		9F879CB826173116006FD55E /* StoregaeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F879CB726173116006FD55E /* StoregaeManager.swift */; };
+		9F879CBB2619A24A006FD55E /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F879CBA2619A24A006FD55E /* UIViewController.swift */; };
 		9F8C16E7260B02C300F8D17B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C16E6260B02C300F8D17B /* SignInViewController.swift */; };
 		9FE4A0C92608DEA400D668F0 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4A0C82608DEA400D668F0 /* ViewModelType.swift */; };
 		9FE4A0E02609CD6500D668F0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4A0DF2609CD6500D668F0 /* SignUpViewController.swift */; };
@@ -39,6 +42,9 @@
 		9F8404802615680100F6973B /* PetsHouseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsHouseAPI.swift; sourceTree = "<group>"; };
 		9F879CAC26172479006FD55E /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		9F879CAF2617253B006FD55E /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		9F879CB426172E37006FD55E /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
+		9F879CB726173116006FD55E /* StoregaeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoregaeManager.swift; sourceTree = "<group>"; };
+		9F879CBA2619A24A006FD55E /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		9F8C16E6260B02C300F8D17B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9FE4A0C82608DEA400D668F0 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		9FE4A0DF2609CD6500D668F0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +101,15 @@
 				9FE4A0BC2608DDE900D668F0 /* Supporting Files */,
 			);
 			path = PetsHouse;
+			sourceTree = "<group>";
+		};
+		9F879CB326172E2A006FD55E /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				9F879CB426172E37006FD55E /* TokenManager.swift */,
+				9F879CB726173116006FD55E /* StoregaeManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		9FE4A0B62608DD5400D668F0 /* Application */ = {
@@ -161,6 +176,7 @@
 		9FE4A0BD2608DDFE00D668F0 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				9F879CB326172E2A006FD55E /* Manager */,
 				9FE4A0E6260A013F00D668F0 /* Extension */,
 				9FE4A0B62608DD5400D668F0 /* Application */,
 				9FE4A0BA2608DDAF00D668F0 /* Service */,
@@ -195,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				9FE4A0E7260A014F00D668F0 /* UIColor.swift */,
+				9F879CBA2619A24A006FD55E /* UIViewController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -330,10 +347,13 @@
 				9F8404812615680100F6973B /* PetsHouseAPI.swift in Sources */,
 				9F8C16E7260B02C300F8D17B /* SignInViewController.swift in Sources */,
 				9F7DCABF25F995CA00450A79 /* AppDelegate.swift in Sources */,
+				9F879CB526172E37006FD55E /* TokenManager.swift in Sources */,
 				9F7DCAC125F995CA00450A79 /* SceneDelegate.swift in Sources */,
 				9F8403342611C10200F6973B /* WriteViewController.swift in Sources */,
+				9F879CB826173116006FD55E /* StoregaeManager.swift in Sources */,
 				9F879CAD26172479006FD55E /* SignUpViewModel.swift in Sources */,
 				9FE4A0C92608DEA400D668F0 /* ViewModelType.swift in Sources */,
+				9F879CBB2619A24A006FD55E /* UIViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
