@@ -26,7 +26,16 @@ class Service {
         return provider.rx.request(.uploadImage(image))
             .filterSuccessfulStatusCodes().asObservable()
             .map { _ -> Network in
-                return (.ok)
+                return (.success)
+            }.catchError { [unowned self] in return .just(self.setNetworkError($0)) }
+    }
+    
+    func loadImage(_ image: Data) -> Observable<Network> {
+        return provider.rx.request(.loadImage(image))
+            .filterSuccessfulStatusCodes()
+            .asObservable()
+            .map { _ -> Network in
+                return (.success)
             }.catchError { [unowned self] in return .just(self.setNetworkError($0)) }
     }
     
