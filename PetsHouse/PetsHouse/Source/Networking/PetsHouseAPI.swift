@@ -12,6 +12,7 @@ enum PetsHouseAPI {
     case signIn(_ email: String, _ password: String)
     case signUp(_ nickname: String, _ email: String, _ password: String)
     case uploadImage(_ image: Data?)
+    case loadImage(_ image: Data?)
 }
 
 extension PetsHouseAPI: TargetType {
@@ -27,12 +28,14 @@ extension PetsHouseAPI: TargetType {
             return "/auth "
         case .uploadImage:
             return "/media"
+        case .loadImage:
+            return "/media-loadImage"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .signIn,.signUp, .uploadImage:
+        case .signIn,.signUp, .uploadImage, .loadImage:
             return .post
         }
     }
@@ -49,12 +52,14 @@ extension PetsHouseAPI: TargetType {
             return .requestParameters(parameters: ["nickname": nickname,"email": email, "password": password], encoding: JSONEncoding.prettyPrinted)
         case .uploadImage(let image):
             return .uploadMultipart([Moya.MultipartFormData(provider: .data(image ?? Data()), name: "image", fileName: "image.jpg", mimeType: "image/jpg")])
+        case .loadImage(let image):
+            return .uploadMultipart([Moya.MultipartFormData(provider: .data(image ?? Data()), name: "image", fileName: "image.jpg", mimeType: "image/jpg")])
         }
     }
 
     var headers: [String : String]? {
         switch self {
-        case .signIn, .signUp, .uploadImage:
+        case .signIn, .signUp, .uploadImage, .loadImage:
             return nil
         }
     }
