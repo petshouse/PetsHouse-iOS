@@ -22,6 +22,15 @@ class Service {
             }.catchError { [unowned self] in return .just(self.setNetworkError($0)) }
     }
     
+    func verification(_ code: String) -> Observable<Network> {
+        return provider.rx.request(.verification(code))
+            .filterSuccessfulStatusCodes()
+            .asObservable()
+            .map { _ -> Network in
+                return (.ok)
+            }.catchError { [unowned self] in return .just(self.setNetworkError($0))}
+    }
+    
     func uploadImage(_ image: Data) -> Observable<Network> {
         return provider.rx.request(.uploadImage(image))
             .filterSuccessfulStatusCodes().asObservable()
