@@ -23,6 +23,10 @@ class WriteViewController: UIViewController {
     private let titleLbl = UILabel()
     private let locationDropDown = DropDown().then {
         $0.layer.borderColor = UIColor.black.cgColor
+        $0.bottomOffset = CGPoint(x: 0, y:($0.anchorView?.plainView.bounds.height)!)
+        $0.cornerRadius = 15
+        $0.cellHeight = 30
+        $0.selectionBackgroundColor = UIColor.white
     }
     private let writeTxtView = UITextView()
     private let animalImage = UIImageView()
@@ -76,8 +80,9 @@ class WriteViewController: UIViewController {
         locationDropDown.snp.makeConstraints { (make) in
             make.centerX.equalTo(view)
             make.top.equalTo(userImage.snp.bottom).offset(20)
-            make.leading.equalTo(30)
-            make.trailing.equalTo(-50)
+//            make.leading.equalTo(30)
+//            make.trailing.equalTo(-50)
+            make.width.equalTo(150)
         }
         writeTxtView.snp.makeConstraints{ (make) in
             make.centerX.equalTo(view)
