@@ -24,7 +24,7 @@ extension PetsHouseAPI: TargetType {
     var path: String {
         switch self {
         case .signIn:
-            return "/auth"
+            return "/api/v1/login"
         case .signUp:
             return "/api/v1/auth "
         case .verification:
