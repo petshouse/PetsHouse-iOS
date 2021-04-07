@@ -25,11 +25,11 @@ extension PetsHouseAPI: TargetType {
         case .signIn:
             return "/auth"
         case .signUp:
-            return "/auth "
+            return "/api/v1/auth "
         case .uploadImage:
-            return "/media"
+            return "/api/v1/media"
         case .loadImage:
-            return "/media-loadImage"
+            return "/api/v1/loadimage/:media"
         }
     }
 
