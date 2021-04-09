@@ -33,8 +33,8 @@ class SignUpViewModel: ViewModelType {
         
         input.doneTap.asObservable().withLatestFrom(info).subscribe(onNext: { [weak self] nickname, email, password in
             guard let self = self else { return }
-            api.signUP(nickname, email, password).subscribe(onNext: { respose in
-                switch respose {
+            api.signUP(nickname, email, password).subscribe(onNext: { response in
+                switch response {
                 case .ok:
                     result.onCompleted()
                 case .forbidden:
