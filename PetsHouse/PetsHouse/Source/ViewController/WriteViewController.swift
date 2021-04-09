@@ -21,12 +21,16 @@ class WriteViewController: UIViewController {
         $0.clipsToBounds = true
     }
     private let titleLbl = UILabel()
+    private let dropDownBtn = UIButton().then {
+        $0.setTitle("지역 선택", for: .normal)
+    }
     private let locationDropDown = DropDown().then {
         $0.layer.borderColor = UIColor.black.cgColor
         $0.bottomOffset = CGPoint(x: 0, y:($0.anchorView?.plainView.bounds.height)!)
         $0.cornerRadius = 15
         $0.cellHeight = 30
         $0.selectionBackgroundColor = UIColor.white
+        $0.show()
     }
     private let writeTxtView = UITextView()
     private let animalImage = UIImageView()
@@ -56,6 +60,7 @@ class WriteViewController: UIViewController {
                 
         view.addSubview(userImage)
         view.addSubview(titleLbl)
+        view.addSubview(dropDownBtn)
         view.addSubview(locationDropDown)
         view.addSubview(writeTxtView)
         view.addSubview(animalImage)
@@ -80,8 +85,6 @@ class WriteViewController: UIViewController {
         locationDropDown.snp.makeConstraints { (make) in
             make.centerX.equalTo(view)
             make.top.equalTo(userImage.snp.bottom).offset(20)
-//            make.leading.equalTo(30)
-//            make.trailing.equalTo(-50)
             make.width.equalTo(150)
         }
         writeTxtView.snp.makeConstraints{ (make) in
@@ -129,6 +132,8 @@ class WriteViewController: UIViewController {
             imagePicker.sourceType = .photoLibrary
             self.present(imagePicker, animated: true, completion: nil)
         }).disposed(by: disposeBag)
+        
+        
     }
 
 }
