@@ -104,8 +104,17 @@ class SignUpViewController: UIViewController {
         let output = viewModel.transform(input: input)
         
         output.isEnable.drive(signUpBtn.rx.isEnabled).disposed(by: disposeBag)
-        output.result.emit(onNext: { [unowned self] text in alert(text)},
-                           onCompleted: { [unowned self] in navigationController?.popViewController(animated: true)}).disposed(by: disposeBag)
+        output.result.emit(onNext: { _ in
+            self.pushVC("verificationVC")
+        }).disposed(by: disposeBag)
+    }
+    
+    func setUI() {
+        signUpBtn.rx.tap.subscribe(onNext: { _ in
+            self.pushVC("verificationVC")
+        }).disposed(by: disposeBag)
+        
+        passwordTxtField.isSecureTextEntry = true
     }
     
     //Constantraint
