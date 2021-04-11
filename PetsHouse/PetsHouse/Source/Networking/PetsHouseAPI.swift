@@ -64,8 +64,12 @@ extension PetsHouseAPI: TargetType {
 
     var headers: [String : String]? {
         switch self {
-        case .signIn, .signUp,.verification,.uploadImage, .loadImage:
+        case .signIn, .signUp,.verification:
             return nil
+        case .uploadImage, .loadImage:
+            guard let token = TokenManager.currentToken?.accessToken else { return nil }
+            return ["Authorization" : "Bearer " + token]
+
         }
     }
 
