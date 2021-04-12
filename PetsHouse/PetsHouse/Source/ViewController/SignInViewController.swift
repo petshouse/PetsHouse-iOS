@@ -57,6 +57,22 @@ class SignInViewController: UIViewController {
         $0.titleLabel?.font = UIFont(name: "BMJUA", size: 10)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.addSubview(logoView)
+        view.addSubview(emailLbl)
+        view.addSubview(emailTxtField)
+        view.addSubview(passwordLbl)
+        view.addSubview(passwordTxtField)
+        view.addSubview(signInBtn)
+        view.addSubview(signUpBtn)
+        
+        constraint()
+        bindViewModel()
+    }
+    
+    
     func bindViewModel() {
         let input = SignInViewModel.Input(email: emailTxtField.rx.text.orEmpty.asDriver(),
                                           password: passwordTxtField.rx.text.orEmpty.asDriver(),
@@ -114,20 +130,7 @@ class SignInViewController: UIViewController {
 
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        view.addSubview(logoView)
-        view.addSubview(emailLbl)
-        view.addSubview(emailTxtField)
-        view.addSubview(passwordLbl)
-        view.addSubview(passwordTxtField)
-        view.addSubview(signInBtn)
-        view.addSubview(signUpBtn)
-        
-        constraint()
-    }
-    
+
 
  
 
