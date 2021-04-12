@@ -14,6 +14,9 @@ import Then
 
 class SignInViewController: UIViewController {
     
+    private let disposeBag = DisposeBag()
+    private let viewModel = SignInViewModel()
+    
     //UI
     private let logoView = UIImageView().then {
         $0.image = UIImage(named: "Logo with text")
@@ -52,6 +55,18 @@ class SignInViewController: UIViewController {
         $0.setTitle("계정이 없으신가요? 회원가입 하기", for: .normal)
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont(name: "BMJUA", size: 10)
+    }
+    
+    func bindViewModel() {
+        let input = SignInViewModel.Input(email: emailTxtField.rx.text.orEmpty.asDriver(),
+                                          password: passwordTxtField.rx.text.orEmpty.asDriver(),
+                                          doneTap: signInBtn.rx.tap.asDriver())
+        let output = viewModel.transform(input: input)
+        
+        output.isEnable.drive(signInBtn.rx.isEnabled).disposed(by: disposeBag)
+        output.result.emit(onCompleted: { [unowned self] in
+            self.pushVC("mainVC")
+        }).disposed(by: disposeBag)
     }
     
     
