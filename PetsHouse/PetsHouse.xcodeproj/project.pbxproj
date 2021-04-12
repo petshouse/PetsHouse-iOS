@@ -25,6 +25,7 @@
 		9F879CBE2619A864006FD55E /* WriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F879CBD2619A864006FD55E /* WriteViewModel.swift */; };
 		9F879CC9261AA693006FD55E /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F879CC8261AA693006FD55E /* MainModel.swift */; };
 		9F879CEE261AB0E4006FD55E /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F879CED261AB0E4006FD55E /* VerificationViewController.swift */; };
+		9F88CEDC261FF9CE0081BB5C /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F88CEDB261FF9CE0081BB5C /* SignInViewModel.swift */; };
 		9F8C16E7260B02C300F8D17B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C16E6260B02C300F8D17B /* SignInViewController.swift */; };
 		9FE4A0C92608DEA400D668F0 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4A0C82608DEA400D668F0 /* ViewModelType.swift */; };
 		9FE4A0E02609CD6500D668F0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4A0DF2609CD6500D668F0 /* SignUpViewController.swift */; };
@@ -51,6 +52,7 @@
 		9F879CBD2619A864006FD55E /* WriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewModel.swift; sourceTree = "<group>"; };
 		9F879CC8261AA693006FD55E /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		9F879CED261AB0E4006FD55E /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
+		9F88CEDB261FF9CE0081BB5C /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		9F8C16E6260B02C300F8D17B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9FE4A0C82608DEA400D668F0 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		9FE4A0DF2609CD6500D668F0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				9FE4A0C82608DEA400D668F0 /* ViewModelType.swift */,
 				9F879CAC26172479006FD55E /* SignUpViewModel.swift */,
 				9F879CBD2619A864006FD55E /* WriteViewModel.swift */,
+				9F88CEDB261FF9CE0081BB5C /* SignInViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				9F84047D261567DF00F6973B /* Networking.swift in Sources */,
 				9F879CB02617253B006FD55E /* Service.swift in Sources */,
 				9F8403CE2614195700F6973B /* TokenModel.swift in Sources */,
+				9F88CEDC261FF9CE0081BB5C /* SignInViewModel.swift in Sources */,
 				9FE4A0E02609CD6500D668F0 /* SignUpViewController.swift in Sources */,
 				9FE4A0E8260A014F00D668F0 /* UIColor.swift in Sources */,
 				9F8404812615680100F6973B /* PetsHouseAPI.swift in Sources */,
