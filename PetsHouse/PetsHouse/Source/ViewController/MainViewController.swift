@@ -42,11 +42,10 @@ class MainViewController: UIViewController {
             self.sequencePicker.text = self.sequenceData[selectRow]
             self.sequencePicker.resignFirstResponder()
         }).disposed(by: disposeBag)
-            
+        
     }
     
     func pickerBind() {
-        
         pickerView.delegate = self
         pickerView.dataSource = nil
         sequencePicker.inputView = pickerView
@@ -63,9 +62,37 @@ class MainViewController: UIViewController {
         sequencePicker.inputView = pickerView
     }
     
+    private func constantraint() {
+        logoView.snp.makeConstraints { (make) in
+            make.center.equalTo(view)
+            make.top.equalTo(view.frame.height/3)
+        }
+        sequencePicker.snp.makeConstraints{ (make) in
+            make.centerX.equalTo(view)
+            make.top.equalTo(logoView.snp.bottom).offset(20)
+            make.leading.equalTo(50)
+        }
+        areaPicker.snp.makeConstraints{ (make) in
+            make.centerX.equalTo(view)
+            make.top.equalTo(logoView.snp.bottom).offset(20)
+            make.leading.equalTo(20)
+            make.trailing.equalTo(-50)
+        }
+        tableView.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view)
+            make.top.equalTo(sequencePicker.snp.bottom).offset(13)
+            make.leading.equalTo(0)
+            make.trailing.equalTo(0)
+            make.bottom.equalTo(0)
+        }
+        
+    }
+    
 }
 
-extension MainViewController: UIPickerViewDelegate {
+extension MainViewController: UIPickerViewDelegate, UITableViewDelegate {
+ 
+    
     
 }
 
