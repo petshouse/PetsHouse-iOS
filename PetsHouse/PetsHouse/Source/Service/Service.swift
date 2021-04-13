@@ -58,6 +58,15 @@ class Service {
             }.catchError { [unowned self] in return .just(self.setNetworkError($0)) }
     }
     
+    func loadPost() -> Observable<(MainModel?,Network)> {
+        return provider.rx.request(.loadPost)
+            .filterSuccessfulStatusCodes()
+            .asObservable()
+            .map(MainModel.self)
+            .map { return ($0, .success)}
+            .catchError{ _ in return .just((nil, .fail))}
+    }
+    
     func setNetworkError(_ error: Error) -> Network {
         guard let status = (error as? MoyaError)?.response?.statusCode else { return (.fail) }
          print(error)
