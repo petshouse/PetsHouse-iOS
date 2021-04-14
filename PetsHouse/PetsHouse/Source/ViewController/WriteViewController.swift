@@ -11,7 +11,6 @@ import RxSwift
 import RxCocoa
 import SnapKit
 import Then
-import DropDown
 
 class WriteViewController: UIViewController {
     
@@ -24,17 +23,7 @@ class WriteViewController: UIViewController {
         $0.clipsToBounds = true
     }
     private let titleTxtField = UITextField()
-    private let dropDownBtn = UIButton().then {
-        $0.setTitle("지역 선택", for: .normal)
-    }
-    private let locationDropDown = DropDown().then {
-        $0.layer.borderColor = UIColor.black.cgColor
-        $0.bottomOffset = CGPoint(x: 0, y:($0.anchorView?.plainView.bounds.height)!)
-        $0.cornerRadius = 15
-        $0.cellHeight = 30
-        $0.selectionBackgroundColor = UIColor.white
-        $0.show()
-    }
+    private let sequencePicker = UITextField()
     private let writeTxtView = UITextView()
     private let animalImage = UIImageView()
     private let photoImage = UIImageView().then {
@@ -56,6 +45,12 @@ class WriteViewController: UIViewController {
     }
     private let postBtn = UIBarButtonItem()
     
+    let pickerView = UIPickerView()
+    let doneToolBar = UIToolbar()
+    let doneBarButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: nil, action: nil)
+    
+    var sequenceData: [String] = []
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,8 +59,7 @@ class WriteViewController: UIViewController {
                 
         view.addSubview(userImage)
         view.addSubview(titleTxtField)
-        view.addSubview(dropDownBtn)
-        view.addSubview(locationDropDown)
+        view.addSubview(sequencePicker)
         view.addSubview(writeTxtView)
         view.addSubview(animalImage)
         view.addSubview(photoImage)
@@ -75,6 +69,8 @@ class WriteViewController: UIViewController {
         constantraint()
         bindViewModel()
         setUI()
+        pickerBind()
+        createPicker()
     }
     
     func bindViewModel() {
@@ -105,6 +101,30 @@ class WriteViewController: UIViewController {
             self.present(imagePicker, animated: true, completion: nil)
         }).disposed(by: disposeBag)
         
+        doneBarButton.rx.tap.subscribe(onNext: { _ in
+            let selectRow = self.pickerView.selectedRow(inComponent: 0)
+            self.sequencePicker.text = self.sequenceData[selectRow]
+            self.sequencePicker.resignFirstResponder()
+        }).disposed(by: disposeBag)
+        
+    }
+    
+    func pickerBind() {
+        pickerView.delegate = self
+        pickerView.dataSource = nil
+        sequencePicker.inputView = pickerView
+        
+        _ = Observable.just(sequenceData).bind(to: pickerView.rx.itemTitles) { _, item in
+            return "\(item)"
+        }
+    }
+    
+    func createPicker() {
+        doneToolBar.sizeToFit()
+        doneToolBar.items = [doneBarButton]
+        
+        sequencePicker.inputAccessoryView = doneToolBar
+        sequencePicker.inputView = pickerView
     }
     
     func constantraint() {
@@ -118,14 +138,14 @@ class WriteViewController: UIViewController {
             make.top.equalTo(view.frame.height/2)
             make.leading.equalTo(userImage.snp.right).offset(10)
         }
-        locationDropDown.snp.makeConstraints { (make) in
-            make.centerX.equalTo(view)
-            make.top.equalTo(userImage.snp.bottom).offset(20)
-            make.width.equalTo(150)
-        }
+//        locationDropDown.snp.makeConstraints { (make) in
+//            make.centerX.equalTo(view)
+//            make.top.equalTo(userImage.snp.bottom).offset(20)
+//            make.width.equalTo(150)
+//        }
         writeTxtView.snp.makeConstraints{ (make) in
             make.centerX.equalTo(view)
-            make.top.equalTo(locationDropDown.snp.bottom).offset(20)
+            make.top.equalTo(titleTxtField.snp.bottom).offset(20)
             make.leading.equalTo(30)
             make.trailing.equalTo(-30)
         }
@@ -157,7 +177,7 @@ class WriteViewController: UIViewController {
 
 }
 
-extension WriteViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension WriteViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
