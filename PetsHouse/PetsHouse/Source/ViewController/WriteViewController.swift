@@ -16,11 +16,14 @@ import DropDown
 class WriteViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
+    private let viewModel = WriteViewModel()
     
+    private let editImageData = BehaviorRelay<Data?>(value: nil)
+
     private let userImage = UIImageView().then {
         $0.clipsToBounds = true
     }
-    private let titleLbl = UILabel()
+    private let titleTxtField = UITextField()
     private let dropDownBtn = UIButton().then {
         $0.setTitle("지역 선택", for: .normal)
     }
@@ -51,6 +54,7 @@ class WriteViewController: UIViewController {
         $0.textColor = .black
         $0.font = UIFont(name: "BMJUA", size: 20)
     }
+    private let postBtn = UIBarButtonItem()
     
 
     override func viewDidLoad() {
@@ -59,7 +63,7 @@ class WriteViewController: UIViewController {
         // Do any additional setup after loading the view.
                 
         view.addSubview(userImage)
-        view.addSubview(titleLbl)
+        view.addSubview(titleTxtField)
         view.addSubview(dropDownBtn)
         view.addSubview(locationDropDown)
         view.addSubview(writeTxtView)
@@ -69,6 +73,38 @@ class WriteViewController: UIViewController {
         view.addSubview(cameraBtn)
         
         constantraint()
+        bindViewModel()
+        setUI()
+    }
+    
+    func bindViewModel() {
+        let input = WriteViewModel.Input(titleText: titleTxtField.rx.text.orEmpty.asDriver(),
+                                         postText: writeTxtView.rx.text.orEmpty.asDriver(),
+                                         selectImage: editImageData.asDriver(onErrorJustReturn: nil),
+                                         doneTap: postBtn.rx.tap.asDriver())
+        let output = viewModel.transform(input: input)
+        
+        output.isEnable.drive(postBtn.rx.isEnabled).disposed(by: disposeBag)
+        output.result.emit(onCompleted: { [unowned self] in
+            navigationController?.popViewController(animated: true)
+        }).disposed(by: disposeBag)
+    }
+    
+    func setUI() {
+        cameraBtn.rx.tap.subscribe(onNext: { _ in
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera
+            self.present(imagePicker, animated: true, completion: nil)
+        }).disposed(by: disposeBag)
+        
+        photoBtn.rx.tap.subscribe(onNext: { _ in
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            self.present(imagePicker, animated: true, completion: nil)
+        }).disposed(by: disposeBag)
+        
     }
     
     func constantraint() {
@@ -77,7 +113,7 @@ class WriteViewController: UIViewController {
             make.top.equalTo(view.frame.height/2)
             make.leading.equalTo(30)
         }
-        titleLbl.snp.makeConstraints{ (make) in
+        titleTxtField.snp.makeConstraints{ (make) in
             make.centerX.equalTo(view)
             make.top.equalTo(view.frame.height/2)
             make.leading.equalTo(userImage.snp.right).offset(10)
@@ -117,23 +153,6 @@ class WriteViewController: UIViewController {
             make.centerX.equalTo(view)
             make.bottom.equalTo(cameraLbl.snp.top).offset(10)
         }
-    }
-    func setUI() {
-        cameraBtn.rx.tap.subscribe(onNext: { _ in
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = .camera
-            self.present(imagePicker, animated: true, completion: nil)
-        }).disposed(by: disposeBag)
-        
-        photoBtn.rx.tap.subscribe(onNext: { _ in
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = .photoLibrary
-            self.present(imagePicker, animated: true, completion: nil)
-        }).disposed(by: disposeBag)
-        
-        
     }
 
 }
