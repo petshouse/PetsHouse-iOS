@@ -21,7 +21,8 @@ class MainCell: UITableViewCell {
     let postImage = UIImageView()
     let sirenLbl = UILabel()
     let sirenBtn = UIButton().then {
-        $0.setImage(UIImage(named: "empty siren"), for: .normal)
+        $0.setImage(UIImage(named: "empty siren"), for: UIControl.State.normal)
+        $0.setImage(UIImage(named: "siren"), for: UIControl.State.normal)
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
