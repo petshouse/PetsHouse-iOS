@@ -16,8 +16,8 @@ class MainCell: UITableViewCell {
     
     let nameLbl = UILabel()
     let timeLbl = UILabel()
-    let titleLbl = UILabel()
-    let contentLbl = UILabel()
+    let titleTxtField = UITextField()
+    let contentTxtView = UITextView()
     let postImage = UIImageView()
     let sirenLbl = UILabel()
     let sirenBtn = UIButton().then {
@@ -34,8 +34,8 @@ class MainCell: UITableViewCell {
         addSubview(profleImage)
         addSubview(nameLbl)
         addSubview(timeLbl)
-        addSubview(titleLbl)
-        addSubview(contentLbl)
+        addSubview(titleTxtField)
+        addSubview(contentTxtView)
         addSubview(postImage)
         addSubview(sirenLbl)
         addSubview(sirenBtn)
@@ -54,21 +54,21 @@ class MainCell: UITableViewCell {
             $0.leading.equalTo(profleImage.snp.trailing).offset(13)
             $0.top.equalTo(nameLbl.snp.bottom).offset(5)
         }
-        titleLbl.snp.makeConstraints {
+        titleTxtField.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(profleImage.snp.bottom).offset(25)
             $0.leading.equalTo(30)
             $0.trailing.equalTo(30)
         }
-        contentLbl.snp.makeConstraints {
+        contentTxtView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(titleLbl.snp.bottom).offset(18)
+            $0.top.equalTo(titleTxtField.snp.bottom).offset(18)
             $0.leading.equalTo(30)
             $0.trailing.equalTo(30)
         }
         postImage.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(contentLbl.snp.bottom).offset(18)
+            $0.top.equalTo(contentTxtView.snp.bottom).offset(18)
             $0.leading.equalTo(30)
         }
         sirenLbl.snp.makeConstraints {
