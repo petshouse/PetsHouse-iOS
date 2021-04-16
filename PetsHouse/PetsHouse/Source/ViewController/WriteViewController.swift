@@ -138,11 +138,7 @@ class WriteViewController: UIViewController {
             make.top.equalTo(view.frame.height/2)
             make.leading.equalTo(userImage.snp.right).offset(10)
         }
-//        locationDropDown.snp.makeConstraints { (make) in
-//            make.centerX.equalTo(view)
-//            make.top.equalTo(userImage.snp.bottom).offset(20)
-//            make.width.equalTo(150)
-//        }
+
         writeTxtView.snp.makeConstraints{ (make) in
             make.centerX.equalTo(view)
             make.top.equalTo(titleTxtField.snp.bottom).offset(20)
