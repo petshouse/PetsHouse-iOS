@@ -9,9 +9,9 @@ import Foundation
 
 class MainModel: Codable {
     let userId: String
-    let like: Int
-    let view: Int
-    let content: String
+    let nickname: String
+    let title: String
+    let description: String
     let media: String
     let date: String
 }
