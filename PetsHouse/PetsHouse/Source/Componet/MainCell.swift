@@ -7,6 +7,8 @@
 
 import UIKit
 
+import SnapKit
+
 class MainCell: UITableViewCell {
     
     let profleImage = UIImageView().then {
@@ -14,10 +16,18 @@ class MainCell: UITableViewCell {
         $0.clipsToBounds = true
     }
     
-    let nameLbl = UILabel()
-    let timeLbl = UILabel()
-    let titleTxtField = UITextField()
-    let contentTxtView = UITextView()
+    let nameLbl = UILabel().then {
+        $0.font = UIFont(name: "BMJUA", size: 25)
+    }
+    let timeLbl = UILabel().then {
+        $0.font = UIFont(name: "BMJUA", size: 15)
+    }
+    let titleTxtField = UITextField().then {
+        $0.font = UIFont(name: "BMJUA", size: 20)
+    }
+    let contentTxtView = UITextView().then {
+        $0.font = UIFont(name: "BMJUA", size: 15)
+    }
     let postImage = UIImageView()
     let sirenLbl = UILabel()
     let sirenBtn = UIButton().then {
@@ -41,48 +51,43 @@ class MainCell: UITableViewCell {
         addSubview(sirenBtn)
         
         profleImage.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
+            $0.top.equalTo(snp.top).offset(15)
             $0.width.height.equalTo(50)
             $0.leading.equalTo(20)
         }
         nameLbl.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
+            $0.top.equalTo(snp.top).offset(15)
             $0.leading.equalTo(profleImage.snp.trailing).offset(15)
+            $0.trailing.equalTo(moreBtn.snp.leading).offset(-30)
         }
         timeLbl.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.leading.equalTo(profleImage.snp.trailing).offset(13)
             $0.top.equalTo(nameLbl.snp.bottom).offset(5)
+            $0.leading.equalTo(profleImage.snp.trailing).offset(15)
         }
         titleTxtField.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
             $0.top.equalTo(profleImage.snp.bottom).offset(25)
             $0.leading.equalTo(30)
-            $0.trailing.equalTo(30)
+            $0.trailing.equalTo(-30)
         }
         contentTxtView.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
             $0.top.equalTo(titleTxtField.snp.bottom).offset(18)
             $0.leading.equalTo(30)
-            $0.trailing.equalTo(30)
+            $0.trailing.equalTo(-30)
         }
         postImage.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
             $0.top.equalTo(contentTxtView.snp.bottom).offset(18)
             $0.leading.equalTo(30)
+            $0.trailing.equalTo(-30)
         }
         sirenLbl.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
             $0.top.equalTo(postImage.snp.bottom).offset(23)
             $0.leading.equalTo(30)
         }
         sirenBtn.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
             $0.leading.equalTo(sirenLbl.snp.trailing).offset(10)
             $0.top.equalTo(postImage.snp.bottom).offset(23)
         }
         moreBtn.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
             $0.trailing.equalTo(-10)
             $0.leading.equalTo(timeLbl.snp.trailing).offset(30)
         }
