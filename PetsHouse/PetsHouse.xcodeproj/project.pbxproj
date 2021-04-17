@@ -29,6 +29,7 @@
 		9F88CEF32623DE5A0081BB5C /* WriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F88CEF22623DE5A0081BB5C /* WriteModel.swift */; };
 		9F88CEF62623E7E90081BB5C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F88CEF52623E7E90081BB5C /* MainViewController.swift */; };
 		9F88CEFA2623E88F0081BB5C /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F88CEF92623E88F0081BB5C /* MainCell.swift */; };
+		9F88CF2A2625A0DA0081BB5C /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F88CF292625A0D90081BB5C /* MainViewModel.swift */; };
 		9F8C16E7260B02C300F8D17B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C16E6260B02C300F8D17B /* SignInViewController.swift */; };
 		9FE4A0C92608DEA400D668F0 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4A0C82608DEA400D668F0 /* ViewModelType.swift */; };
 		9FE4A0E02609CD6500D668F0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4A0DF2609CD6500D668F0 /* SignUpViewController.swift */; };
@@ -59,6 +60,7 @@
 		9F88CEF22623DE5A0081BB5C /* WriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteModel.swift; sourceTree = "<group>"; };
 		9F88CEF52623E7E90081BB5C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9F88CEF92623E88F0081BB5C /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
+		9F88CF292625A0D90081BB5C /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		9F8C16E6260B02C300F8D17B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9FE4A0C82608DEA400D668F0 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		9FE4A0DF2609CD6500D668F0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				9F879CAC26172479006FD55E /* SignUpViewModel.swift */,
 				9F879CBD2619A864006FD55E /* WriteViewModel.swift */,
 				9F88CEDB261FF9CE0081BB5C /* SignInViewModel.swift */,
+				9F88CF292625A0D90081BB5C /* MainViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -265,7 +268,7 @@
 				9F7DCAB725F995CA00450A79 /* Sources */,
 				9F7DCAB825F995CA00450A79 /* Frameworks */,
 				9F7DCAB925F995CA00450A79 /* Resources */,
-				52A0D95223E9552C55139645 /* [CP] Embed Pods Frameworks */,
+				A1FC2548F1EA7E489335388A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -344,7 +347,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		52A0D95223E9552C55139645 /* [CP] Embed Pods Frameworks */ = {
+		A1FC2548F1EA7E489335388A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -389,6 +392,7 @@
 				9F879CB826173116006FD55E /* StoregaeManager.swift in Sources */,
 				9F879CAD26172479006FD55E /* SignUpViewModel.swift in Sources */,
 				9FE4A0C92608DEA400D668F0 /* ViewModelType.swift in Sources */,
+				9F88CF2A2625A0DA0081BB5C /* MainViewModel.swift in Sources */,
 				9F879CBB2619A24A006FD55E /* UIViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
