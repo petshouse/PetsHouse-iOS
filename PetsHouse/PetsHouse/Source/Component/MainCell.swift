@@ -2,7 +2,7 @@
 //  MainCell.swift
 //  PetsHouse
 //
-//  Created by 문지수 on 2021/04/12.
+//  Created by 문지수 on 2021/04/17.
 //
 
 import UIKit
@@ -49,16 +49,18 @@ class MainCell: UITableViewCell {
         addSubview(postImage)
         addSubview(sirenLbl)
         addSubview(sirenBtn)
+        addSubview(moreBtn)
         
         profleImage.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
             $0.top.equalTo(snp.top).offset(15)
             $0.width.height.equalTo(50)
             $0.leading.equalTo(20)
         }
         nameLbl.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
             $0.top.equalTo(snp.top).offset(15)
             $0.leading.equalTo(profleImage.snp.trailing).offset(15)
-            $0.trailing.equalTo(moreBtn.snp.leading).offset(-30)
         }
         timeLbl.snp.makeConstraints {
             $0.top.equalTo(nameLbl.snp.bottom).offset(5)
@@ -88,6 +90,7 @@ class MainCell: UITableViewCell {
             $0.top.equalTo(postImage.snp.bottom).offset(23)
         }
         moreBtn.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
             $0.trailing.equalTo(-10)
             $0.leading.equalTo(timeLbl.snp.trailing).offset(30)
         }
