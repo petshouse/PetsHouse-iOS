@@ -51,25 +51,26 @@ class VerificationViewController: UIViewController {
     private func constantraint() {
         textLogo.snp.makeConstraints { (make) in
             make.centerX.equalTo(view)
-            make.top.equalTo(view.frame.height/17)
-            make.width.equalTo(150)
+            make.top.equalTo(view.frame.height/15)
+            make.width.equalTo(170)
             make.height.equalTo(70)
         }
         verificationLbl.snp.makeConstraints{ (make) in
             make.centerX.equalTo(view)
-            make.top.equalTo(textLogo.snp.bottom).offset(100)
+            make.top.equalTo(textLogo.snp.bottom).offset(130)
         }
         codeTxtField.snp.makeConstraints{ (make) in
             make.centerX.equalTo(view)
-            make.top.equalTo(verificationLbl.snp.bottom).offset(50)
-            make.leading.equalTo(50)
-            make.trailing.equalTo(-50)
+            make.top.equalTo(verificationLbl.snp.bottom).offset(80)
+            make.leading.equalTo(130)
+            make.trailing.equalTo(-130)
         }
         nextBtn.snp.makeConstraints { (make) in
             make.centerX.equalTo(view)
-            make.top.equalTo(codeTxtField.snp.bottom).offset(100)
+            make.top.equalTo(codeTxtField.snp.bottom).offset(120)
             make.leading.equalTo(55)
             make.trailing.equalTo(-55)
+            make.height.equalTo(40)
         }
     }
     
