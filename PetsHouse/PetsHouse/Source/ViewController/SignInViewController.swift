@@ -100,28 +100,29 @@ class SignInViewController: UIViewController {
             make.trailing.equalTo(-50)
         }
         emailTxtField.snp.makeConstraints { (make) in
-            make.top.equalTo(emailLbl.snp.bottom).offset(20)
+            make.top.equalTo(emailLbl.snp.bottom).offset(30)
             make.centerX.equalTo(view)
             make.leading.equalTo(30)
             make.trailing.equalTo(-30)
         }
         passwordLbl.snp.makeConstraints{ (make) in
-            make.top.equalTo(emailTxtField.snp.bottom).offset(40)
+            make.top.equalTo(emailTxtField.snp.bottom).offset(50)
             make.centerX.equalTo(view)
             make.leading.equalTo(30)
             make.trailing.equalTo(-30)
         }
         passwordTxtField.snp.makeConstraints { (make) in
-            make.top.equalTo(passwordLbl.snp.bottom).offset(20)
+            make.top.equalTo(passwordLbl.snp.bottom).offset(30)
             make.centerX.equalTo(view)
             make.leading.equalTo(30)
             make.trailing.equalTo(-30)
         }
         signInBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(passwordTxtField.snp.bottom).offset(30)
+            make.top.equalTo(passwordTxtField.snp.bottom).offset(70)
             make.centerX.equalTo(view)
             make.leading.equalTo(30)
             make.trailing.equalTo(-30)
+            make.height.equalTo(40)
         }
         signUpBtn.snp.makeConstraints { (make) in
             make.top.equalTo(signInBtn.snp.bottom).offset(10)
