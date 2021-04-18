@@ -67,6 +67,15 @@ class Service {
             .catchError{ _ in return .just((nil, .fail))}
     }
     
+    func writePost(_ title: String, _ description: String, _ mediaId: String) -> Observable<(Write?, Network)> {
+        return provider.rx.request(.writePost(title, description, mediaId))
+            .filterSuccessfulStatusCodes()
+            .asObservable()
+            .map(Write.self)
+            .map { return ($0, .ok)}
+            .catchError{ _ in return .just((nil, .fail))}
+    }
+    
     func setNetworkError(_ error: Error) -> Network {
         guard let status = (error as? MoyaError)?.response?.statusCode else { return (.fail) }
          print(error)
