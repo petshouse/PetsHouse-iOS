@@ -10,6 +10,6 @@ import Foundation
 
 struct Write: Codable {
     let title: String
-    let content: String
-    let media: Data?
+    let description: String
+    let mediaId: String
 }
