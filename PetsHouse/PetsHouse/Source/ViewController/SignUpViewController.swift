@@ -82,6 +82,8 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        passwordTxtField.isSecureTextEntry = true
+
         view.addSubview(logoView)
         view.addSubview(nicknameLbl)
         view.addSubview(nicknameTxtField)
@@ -114,7 +116,6 @@ class SignUpViewController: UIViewController {
             self.pushVC("verificationVC")
         }).disposed(by: disposeBag)
         
-        passwordTxtField.isSecureTextEntry = true
     }
     
     //Constantraint
@@ -161,10 +162,11 @@ class SignUpViewController: UIViewController {
             make.trailing.equalTo(-30)
         }
         signUpBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(passwordTxtField.snp.bottom).offset(30)
+            make.top.equalTo(passwordTxtField.snp.bottom).offset(50)
             make.centerX.equalTo(view)
             make.leading.equalTo(30)
             make.trailing.equalTo(-30)
+            make.height.equalTo(40)
         }
         signInBtn.snp.makeConstraints { (make) in
             make.top.equalTo(signUpBtn.snp.bottom).offset(10)
@@ -172,9 +174,4 @@ class SignUpViewController: UIViewController {
         }
 
     }
-    
-    
-    
-    
-
 }
