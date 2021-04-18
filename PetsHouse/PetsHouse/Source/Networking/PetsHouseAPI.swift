@@ -15,6 +15,7 @@ enum PetsHouseAPI {
     case uploadImage(_ image: Data?)
     case loadImage(_ image: Data?)
     case loadPost
+    case writePost(_ title: String, _ description: String, _ mediaId: String)
 }
 
 extension PetsHouseAPI: TargetType {
@@ -37,12 +38,14 @@ extension PetsHouseAPI: TargetType {
             return "/api/v1/loadimage/:media"
         case .loadPost:
             return "/api/v1/post"
+        case .writePost:
+            return "/api/v1/post"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .signIn,.signUp,.verification,.uploadImage:
+        case .signIn,.signUp,.verification,.uploadImage, .writePost:
             return .post
         case .loadPost, .loadImage:
             return .get
@@ -65,6 +68,8 @@ extension PetsHouseAPI: TargetType {
             return .uploadMultipart([Moya.MultipartFormData(provider: .data(image ?? Data()), name: "image", fileName: "image.jpg", mimeType: "image/jpg")])
         case .loadImage(let image):
             return .uploadMultipart([Moya.MultipartFormData(provider: .data(image ?? Data()), name: "image", fileName: "image.jpg", mimeType: "image/jpg")])
+        case .writePost(let title, let description, let mediaId):
+            return .requestParameters(parameters: ["title": title, "description": description, "mediaId": mediaId], encoding: JSONEncoding.prettyPrinted)
 
         default:
             return .requestPlain
@@ -76,7 +81,7 @@ extension PetsHouseAPI: TargetType {
         switch self {
         case .signIn, .signUp,.verification:
             return nil
-        case .uploadImage, .loadImage, .loadPost:
+        case .uploadImage, .loadImage, .loadPost, .writePost:
             guard let token = TokenManager.currentToken?.accessToken else { return nil }
             return ["Authorization" : "Bearer " + token]
 
