@@ -60,6 +60,8 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        passwordTxtField.isSecureTextEntry = true
+        
         view.addSubview(logoView)
         view.addSubview(emailLbl)
         view.addSubview(emailTxtField)
@@ -130,9 +132,4 @@ class SignInViewController: UIViewController {
         }
 
     }
-    
-
-
- 
-
 }
