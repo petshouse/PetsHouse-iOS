@@ -11,6 +11,8 @@ import SnapKit
 
 class MainCell: UITableViewCell {
     
+    static let identifier = "mainCell"
+    
     let profleImage = UIImageView().then {
         $0.layer.cornerRadius = 25
         $0.clipsToBounds = true
@@ -21,6 +23,9 @@ class MainCell: UITableViewCell {
     }
     let timeLbl = UILabel().then {
         $0.font = UIFont(name: "BMJUA", size: 15)
+    }
+    let moreBtn = UIButton().then {
+        $0.setImage(UIImage(named: "more"), for: .normal)
     }
     let titleTxtField = UITextField().then {
         $0.font = UIFont(name: "BMJUA", size: 20)
@@ -34,9 +39,11 @@ class MainCell: UITableViewCell {
         $0.setImage(UIImage(named: "empty siren"), for: UIControl.State.normal)
         $0.setImage(UIImage(named: "siren"), for: UIControl.State.normal)
     }
-    let moreBtn = UIButton().then {
-        $0.setImage(UIImage(named: "more"), for: .normal)
+    let statusLbl = UILabel().then {
+        $0.font = UIFont(name: "BMJUA", size: 13)
+        $0.textColor = .mainColor
     }
+
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -44,12 +51,13 @@ class MainCell: UITableViewCell {
         addSubview(profleImage)
         addSubview(nameLbl)
         addSubview(timeLbl)
+        addSubview(moreBtn)
         addSubview(titleTxtField)
         addSubview(contentTxtView)
         addSubview(postImage)
         addSubview(sirenLbl)
         addSubview(sirenBtn)
-        addSubview(moreBtn)
+        addSubview(statusLbl)
         
         profleImage.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -65,6 +73,11 @@ class MainCell: UITableViewCell {
         timeLbl.snp.makeConstraints {
             $0.top.equalTo(nameLbl.snp.bottom).offset(5)
             $0.leading.equalTo(profleImage.snp.trailing).offset(15)
+        }
+        moreBtn.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.trailing.equalTo(-10)
+            $0.leading.equalTo(timeLbl.snp.trailing).offset(30)
         }
         titleTxtField.snp.makeConstraints {
             $0.top.equalTo(profleImage.snp.bottom).offset(25)
@@ -89,11 +102,11 @@ class MainCell: UITableViewCell {
             $0.leading.equalTo(sirenLbl.snp.trailing).offset(10)
             $0.top.equalTo(postImage.snp.bottom).offset(23)
         }
-        moreBtn.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
+        statusLbl.snp.makeConstraints {
             $0.trailing.equalTo(-10)
-            $0.leading.equalTo(timeLbl.snp.trailing).offset(30)
+            $0.leading.equalTo(sirenBtn.snp.trailing).offset(30)
         }
+     
     }
     
     required init?(coder: NSCoder) {
