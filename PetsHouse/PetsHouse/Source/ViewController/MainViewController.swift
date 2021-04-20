@@ -19,39 +19,26 @@ class MainViewController: UIViewController {
     
     private let loadData = BehaviorRelay<Void>(value: ())
     var selectIndexPath = PublishRelay<Int>()
-
     
-    private let logoView = UIImageView().then {
-        $0.image = UIImage(named: "Text Logo")
-    }
-    private let sequencePicker = UITextField()
-    private let areaPicker = UITextField()
-    private let tableView = UITableView()
-    
-    let pickerView = UIPickerView()
-    let doneToolBar = UIToolbar()
-    let doneBarButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: nil, action: nil)
-
-    var sequenceData: [String] = []
-    var areaData: [String] = []
-
+    @IBOutlet weak var logoView: UIImageView!
+    @IBOutlet weak var sequencePicker: UIPickerView!
+    @IBOutlet weak var areaPicker: UIPickerView!
+    @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         
-        view.addSubview(logoView)
-        view.addSubview(sequencePicker)
-        view.addSubview(areaPicker)
-        view.addSubview(tableView)
-        
         setUI()
-        pickerBind()
-        createPicker()
-        constantraint()
         bindViewModel()
+        picker()
     }
+    
+    func picker() {
+        let picker = UIPickerView()
+        picker.delegate = self
+    }
+ 
     
     func bindViewModel() {
         let input = MainViewModel.Input(loadData: loadData.asSignal(onErrorJustReturn: ()))
@@ -72,19 +59,9 @@ class MainViewController: UIViewController {
     
     func setUI() {
         let cell = MainCell()
-        
-        doneBarButton.rx.tap.subscribe(onNext: { _ in
-            let selectRow = self.pickerView.selectedRow(inComponent: 0)
-            self.sequencePicker.text = self.sequenceData[selectRow]
-            self.sequencePicker.resignFirstResponder()
-            self.areaPicker.text = self.areaData[selectRow]
-            self.areaPicker.resignFirstResponder()
-        }).disposed(by: disposeBag)
-        
         cell.moreBtn.rx.tap.subscribe(onNext: { _ in
             let actionSheet = UIAlertController(title: "부적절한 게시글입니까?", message: "", preferredStyle: .actionSheet)
             let action = UIAlertAction(title: "신고하기", style: .default, handler: nil)
-            
             actionSheet.addAction(action)
             self.present(actionSheet, animated: true, completion: nil)
         }).disposed(by: self.disposeBag)
@@ -95,59 +72,8 @@ class MainViewController: UIViewController {
         tableView.rowHeight = 220
     }
     
-    
-    
-    func pickerBind() {
-        pickerView.delegate = self
-        pickerView.dataSource = nil
-        sequencePicker.inputView = pickerView
-        areaPicker.inputView = pickerView
-
-        _ = Observable.just(sequenceData).bind(to: pickerView.rx.itemTitles) { _, item in return "\(item)" }
-
-    }
-
-    func createPicker() {
-        doneToolBar.sizeToFit()
-        doneToolBar.items = [doneBarButton]
-
-        sequencePicker.inputAccessoryView = doneToolBar
-        sequencePicker.inputView = pickerView
-
-        areaPicker.inputAccessoryView = doneToolBar
-        areaPicker.inputView = pickerView
-    }
-    
-    private func constantraint() {
-        logoView.snp.makeConstraints { (make) in
-            make.centerX.equalTo(view)
-            make.top.equalTo(view.frame.height/15)
-            make.width.equalTo(170)
-            make.height.equalTo(70)
-        }
-        sequencePicker.snp.makeConstraints{ (make) in
-            make.centerX.equalTo(view)
-            make.top.equalTo(logoView.snp.bottom).offset(20)
-            make.leading.equalTo(50)
-        }
-        areaPicker.snp.makeConstraints{ (make) in
-            make.centerX.equalTo(view)
-            make.top.equalTo(logoView.snp.bottom).offset(20)
-            make.leading.equalTo(20)
-            make.trailing.equalTo(-50)
-        }
-        tableView.snp.makeConstraints { (make) in
-            make.centerX.equalTo(view)
-            make.top.equalTo(sequencePicker.snp.bottom).offset(13)
-            make.leading.equalTo(0)
-            make.trailing.equalTo(0)
-            make.bottom.equalTo(0)
-        }
-        
-    }
-    
 }
 
 extension MainViewController: UIPickerViewDelegate, UITableViewDelegate {
-}
 
+}
