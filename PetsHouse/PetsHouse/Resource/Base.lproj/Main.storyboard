@@ -51,7 +51,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qle-1h-8Hm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="323" y="17"/>
+            <point key="canvasLocation" x="321.73913043478262" y="16.741071428571427"/>
         </scene>
         <!--Write View Controller-->
         <scene sceneID="2O7-Kg-WuQ">
@@ -75,10 +75,62 @@
                     <view key="view" contentMode="scaleToFill" id="2xx-cJ-2A8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Text Logo" translatesAutoresizingMaskIntoConstraints="NO" id="B85-C9-iMS">
+                                <rect key="frame" x="127" y="44" width="160" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="XQQ-Sp-XFG"/>
+                                    <constraint firstAttribute="height" constant="65" id="ofI-Xt-1de"/>
+                                </constraints>
+                            </imageView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sjL-uK-0sx">
+                                <rect key="frame" x="238" y="117" width="156" height="79"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="79" id="I17-Qm-ltp"/>
+                                    <constraint firstAttribute="width" constant="156" id="SAf-G3-1M1"/>
+                                </constraints>
+                            </pickerView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SeA-3P-nyF">
+                                <rect key="frame" x="0.0" y="204" width="414" height="609"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="iok-vU-pBC">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iok-vU-pBC" id="Xwi-dF-5Cv">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dMH-tT-Cod">
+                                <rect key="frame" x="20" y="117" width="156" height="79"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="156" id="0C5-ui-wJZ"/>
+                                    <constraint firstAttribute="height" constant="79" id="Fqb-XM-0cB"/>
+                                </constraints>
+                            </pickerView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="WLi-p9-Rf8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dMH-tT-Cod" firstAttribute="top" secondItem="B85-C9-iMS" secondAttribute="bottom" constant="8" symbolic="YES" id="3DM-0S-f1C"/>
+                            <constraint firstItem="dMH-tT-Cod" firstAttribute="top" secondItem="sjL-uK-0sx" secondAttribute="top" id="5iT-dK-yjN"/>
+                            <constraint firstItem="dMH-tT-Cod" firstAttribute="leading" secondItem="WLi-p9-Rf8" secondAttribute="leading" constant="20" id="9IB-ku-W8F"/>
+                            <constraint firstItem="WLi-p9-Rf8" firstAttribute="trailing" secondItem="sjL-uK-0sx" secondAttribute="trailing" constant="20" id="9eq-pX-b7r"/>
+                            <constraint firstItem="B85-C9-iMS" firstAttribute="centerX" secondItem="2xx-cJ-2A8" secondAttribute="centerX" id="TuK-Zd-skJ"/>
+                            <constraint firstItem="B85-C9-iMS" firstAttribute="top" secondItem="WLi-p9-Rf8" secondAttribute="top" id="bcc-39-pAT"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Main" image="house.fill" catalog="system" id="lPu-kM-EkC"/>
+                    <connections>
+                        <outlet property="areaPicker" destination="sjL-uK-0sx" id="Nz5-0u-YcB"/>
+                        <outlet property="logoView" destination="B85-C9-iMS" id="biB-mf-tgd"/>
+                        <outlet property="sequencePicker" destination="dMH-tT-Cod" id="0uA-Rq-4cZ"/>
+                        <outlet property="tableView" destination="SeA-3P-nyF" id="jNT-54-PUq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kk1-an-IAM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -139,6 +191,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Text Logo" width="484" height="140"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="newspaper.fill" catalog="system" width="128" height="111"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
