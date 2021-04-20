@@ -56,13 +56,14 @@
         <!--Write View Controller-->
         <scene sceneID="2O7-Kg-WuQ">
             <objects>
-                <viewController id="8bv-pO-tq5" customClass="WriteViewController" customModule="PetsHouse" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="writeVC" id="8bv-pO-tq5" customClass="WriteViewController" customModule="PetsHouse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XFX-V6-iZS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="j48-LY-Bqf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="cpT-PD-WtI"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="giC-NU-bPo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -83,16 +84,8 @@
                                     <constraint firstAttribute="height" constant="65" id="ofI-Xt-1de"/>
                                 </constraints>
                             </imageView>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sjL-uK-0sx">
-                                <rect key="frame" x="238" y="117" width="156" height="79"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="79" id="I17-Qm-ltp"/>
-                                    <constraint firstAttribute="width" constant="156" id="SAf-G3-1M1"/>
-                                </constraints>
-                            </pickerView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SeA-3P-nyF">
-                                <rect key="frame" x="0.0" y="204" width="414" height="609"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SeA-3P-nyF">
+                                <rect key="frame" x="0.0" y="210" width="414" height="603"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="iok-vU-pBC">
@@ -105,31 +98,68 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dMH-tT-Cod">
-                                <rect key="frame" x="20" y="117" width="156" height="79"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJ2-ni-1fR">
+                                <rect key="frame" x="20" y="144" width="155" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="156" id="0C5-ui-wJZ"/>
-                                    <constraint firstAttribute="height" constant="79" id="Fqb-XM-0cB"/>
+                                    <constraint firstAttribute="height" constant="40" id="WE0-uE-QOG"/>
+                                    <constraint firstAttribute="width" constant="155" id="eT2-GV-Ba6"/>
                                 </constraints>
-                            </pickerView>
+                                <state key="normal" title="정렬 방식">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54Z-Vk-rcz">
+                                <rect key="frame" x="239" y="144" width="155" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="155" id="bnH-4y-bXg"/>
+                                    <constraint firstAttribute="height" constant="40" id="hKX-fR-a1U"/>
+                                </constraints>
+                                <state key="normal" title="지역">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jx6-MF-xqc">
+                                <rect key="frame" x="324" y="44" width="70" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="sPh-9z-tBG"/>
+                                    <constraint firstAttribute="height" constant="65" id="yWE-Pb-9l9"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="글쓰기">
+                                            <attributes>
+                                                <color key="NSColor" red="1" green="0.5966724753" blue="0.80001658200000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <font key="NSFont" size="18" name="BMJUAOTF"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WLi-p9-Rf8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="dMH-tT-Cod" firstAttribute="top" secondItem="B85-C9-iMS" secondAttribute="bottom" constant="8" symbolic="YES" id="3DM-0S-f1C"/>
-                            <constraint firstItem="dMH-tT-Cod" firstAttribute="top" secondItem="sjL-uK-0sx" secondAttribute="top" id="5iT-dK-yjN"/>
-                            <constraint firstItem="dMH-tT-Cod" firstAttribute="leading" secondItem="WLi-p9-Rf8" secondAttribute="leading" constant="20" id="9IB-ku-W8F"/>
-                            <constraint firstItem="WLi-p9-Rf8" firstAttribute="trailing" secondItem="sjL-uK-0sx" secondAttribute="trailing" constant="20" id="9eq-pX-b7r"/>
+                            <constraint firstItem="SeA-3P-nyF" firstAttribute="centerX" secondItem="B85-C9-iMS" secondAttribute="centerX" id="3Sz-Mx-slV"/>
+                            <constraint firstItem="SeA-3P-nyF" firstAttribute="bottom" secondItem="WLi-p9-Rf8" secondAttribute="bottom" id="7ib-X0-swY"/>
                             <constraint firstItem="B85-C9-iMS" firstAttribute="centerX" secondItem="2xx-cJ-2A8" secondAttribute="centerX" id="TuK-Zd-skJ"/>
+                            <constraint firstItem="SeA-3P-nyF" firstAttribute="top" secondItem="ZJ2-ni-1fR" secondAttribute="bottom" constant="26" id="UdU-ge-5yh"/>
+                            <constraint firstItem="SeA-3P-nyF" firstAttribute="leading" secondItem="2xx-cJ-2A8" secondAttribute="leading" id="WBx-cT-dHO"/>
+                            <constraint firstItem="ZJ2-ni-1fR" firstAttribute="leading" secondItem="WLi-p9-Rf8" secondAttribute="leading" constant="20" id="YSv-US-Qzu"/>
                             <constraint firstItem="B85-C9-iMS" firstAttribute="top" secondItem="WLi-p9-Rf8" secondAttribute="top" id="bcc-39-pAT"/>
+                            <constraint firstItem="WLi-p9-Rf8" firstAttribute="trailing" secondItem="Jx6-MF-xqc" secondAttribute="trailing" constant="20" id="bkN-LE-U0S"/>
+                            <constraint firstItem="Jx6-MF-xqc" firstAttribute="top" secondItem="WLi-p9-Rf8" secondAttribute="top" id="fkx-dO-tSC"/>
+                            <constraint firstItem="ZJ2-ni-1fR" firstAttribute="top" secondItem="B85-C9-iMS" secondAttribute="bottom" constant="35" id="hOD-qZ-z81"/>
+                            <constraint firstItem="54Z-Vk-rcz" firstAttribute="top" secondItem="B85-C9-iMS" secondAttribute="bottom" constant="35" id="iU3-UH-139"/>
+                            <constraint firstItem="WLi-p9-Rf8" firstAttribute="trailing" secondItem="54Z-Vk-rcz" secondAttribute="trailing" constant="20" id="ugl-gb-pG2"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Main" image="house.fill" catalog="system" id="lPu-kM-EkC"/>
                     <connections>
-                        <outlet property="areaPicker" destination="sjL-uK-0sx" id="Nz5-0u-YcB"/>
+                        <outlet property="area" destination="54Z-Vk-rcz" id="v0X-Zc-xHw"/>
                         <outlet property="logoView" destination="B85-C9-iMS" id="biB-mf-tgd"/>
-                        <outlet property="sequencePicker" destination="dMH-tT-Cod" id="0uA-Rq-4cZ"/>
+                        <outlet property="sequence" destination="ZJ2-ni-1fR" id="6Pi-mB-TCV"/>
                         <outlet property="tableView" destination="SeA-3P-nyF" id="jNT-54-PUq"/>
+                        <outlet property="writeBtn" destination="Jx6-MF-xqc" id="dBX-bt-y7v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kk1-an-IAM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -178,6 +208,11 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="1" green="0.5966724753" blue="0.80001658200000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="0.5966724753" blue="0.80001658200000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="elP-7S-ADO" kind="relationship" relationship="viewControllers" id="7oC-tU-NFx"/>
@@ -195,6 +230,9 @@
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="newspaper.fill" catalog="system" width="128" height="111"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
