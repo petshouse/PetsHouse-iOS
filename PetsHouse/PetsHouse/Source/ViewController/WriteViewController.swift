@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import SnapKit
 import Then
+import DropDown
 
 class WriteViewController: UIViewController {
     
@@ -19,11 +20,13 @@ class WriteViewController: UIViewController {
     
     private let editImageData = BehaviorRelay<Data?>(value: nil)
 
-    private let userImage = UIImageView().then {
-        $0.clipsToBounds = true
+    private let titleTxtField = UITextField().then {
+        $0.placeholder = "제목을 입력해주세요"
+        $0.font = UIFont(name: "BMJUA", size: 25)
     }
-    private let titleTxtField = UITextField()
-    private let sequencePicker = UITextField()
+    private let area = UIButton().then {
+        $0.setTitle("지역 선택", for: .normal)
+    }
     private let writeTxtView = UITextView()
     private let animalImage = UIImageView()
     private let photoImage = UIImageView().then {
@@ -44,33 +47,27 @@ class WriteViewController: UIViewController {
         $0.font = UIFont(name: "BMJUA", size: 20)
     }
     private let postBtn = UIBarButtonItem()
+    private let backBtn = UIBarItem()
     
-    let pickerView = UIPickerView()
-    let doneToolBar = UIToolbar()
-    let doneBarButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: nil, action: nil)
+    let areaDropDown = DropDown()
     
-    var sequenceData: [String] = []
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-                
-        view.addSubview(userImage)
+
         view.addSubview(titleTxtField)
-        view.addSubview(sequencePicker)
+        view.addSubview(area)
         view.addSubview(writeTxtView)
         view.addSubview(animalImage)
         view.addSubview(photoImage)
         view.addSubview(photoBtn)
         view.addSubview(cameraBtn)
-        
+
         constantraint()
         bindViewModel()
         setUI()
-        pickerBind()
-        createPicker()
+
     }
     
     func bindViewModel() {
@@ -84,6 +81,15 @@ class WriteViewController: UIViewController {
         output.result.emit(onCompleted: { [unowned self] in
             navigationController?.popViewController(animated: true)
         }).disposed(by: disposeBag)
+    }
+    
+    func dropDown() {
+        areaDropDown.dataSource = ["서울", "대전", "광주", "대구", "부산", "울산", "제주", "강원", "경기", "전남","전북", "경남","경북","충남","충북"]
+        areaDropDown.show()
+        areaDropDown.anchorView = area
+        areaDropDown.bottomOffset = CGPoint(x: 0, y:(areaDropDown.anchorView?.plainView.bounds.height)!)
+        areaDropDown.selectedTextColor = .white
+        areaDropDown.selectionBackgroundColor = .mainColor
     }
     
     func setUI() {
@@ -101,47 +107,46 @@ class WriteViewController: UIViewController {
             self.present(imagePicker, animated: true, completion: nil)
         }).disposed(by: disposeBag)
         
-        doneBarButton.rx.tap.subscribe(onNext: { _ in
-            let selectRow = self.pickerView.selectedRow(inComponent: 0)
-            self.sequencePicker.text = self.sequenceData[selectRow]
-            self.sequencePicker.resignFirstResponder()
-        }).disposed(by: disposeBag)
+        writeTxtView.delegate = self
+        writeTxtView.text = "내용을 입력해주세요"
+        textViewDidBeginEditing(writeTxtView)
+        textViewDidEndEditing(writeTxtView)
         
     }
     
-    func pickerBind() {
-        pickerView.delegate = self
-        pickerView.dataSource = nil
-        sequencePicker.inputView = pickerView
-        
-        _ = Observable.just(sequenceData).bind(to: pickerView.rx.itemTitles) { _, item in
-            return "\(item)"
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
         }
     }
-    
-    func createPicker() {
-        doneToolBar.sizeToFit()
-        doneToolBar.items = [doneBarButton]
-        
-        sequencePicker.inputAccessoryView = doneToolBar
-        sequencePicker.inputView = pickerView
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+        textView.text = "내용을 입력해주세요"
+        textView.textColor = UIColor.lightGray
+        }
     }
+
     
     func constantraint() {
-        userImage.snp.makeConstraints { (make) in
-            make.centerX.equalTo(view)
-            make.top.equalTo(view.frame.height/2)
-            make.leading.equalTo(30)
-        }
+     
         titleTxtField.snp.makeConstraints{ (make) in
             make.centerX.equalTo(view)
-            make.top.equalTo(view.frame.height/2)
-            make.leading.equalTo(userImage.snp.right).offset(10)
+            make.top.equalTo(view.frame.height/7)
+            make.leading.equalTo(30)
+            make.trailing.equalTo(-30)
+        }
+        
+        area.snp.makeConstraints{ (make) in
+            make.centerX.equalTo(view)
+            make.top.equalTo(titleTxtField.snp.bottom).offset(15)
+            make.leading.equalTo(30)
+            make.leading.equalTo(-150)
         }
 
         writeTxtView.snp.makeConstraints{ (make) in
             make.centerX.equalTo(view)
-            make.top.equalTo(titleTxtField.snp.bottom).offset(20)
+            make.top.equalTo(area.snp.bottom).offset(20)
             make.leading.equalTo(30)
             make.trailing.equalTo(-30)
         }
@@ -173,7 +178,7 @@ class WriteViewController: UIViewController {
 
 }
 
-extension WriteViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate {
+extension WriteViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate,UITextViewDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
