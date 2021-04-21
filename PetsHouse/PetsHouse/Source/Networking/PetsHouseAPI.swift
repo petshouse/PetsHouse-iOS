@@ -11,7 +11,7 @@ import Moya
 enum PetsHouseAPI {
     case signIn(_ email: String, _ password: String)
     case signUp(_ nickname: String, _ email: String, _ password: String)
-    case verification(_ code: String)
+    case verification(_ email: String)
     case uploadImage(_ image: Data?)
     case loadImage(_ image: Data?)
     case loadPost
@@ -31,7 +31,7 @@ extension PetsHouseAPI: TargetType {
         case .signUp:
             return "/api/v1/auth "
         case .verification:
-            return "/api/v1/verification/:code"
+            return "/api/v1/emailsend"
         case .uploadImage:
             return "/api/v1/media"
         case .loadImage:
@@ -62,8 +62,8 @@ extension PetsHouseAPI: TargetType {
             return .requestParameters(parameters: ["email": email, "password": password], encoding: JSONEncoding.prettyPrinted)
         case .signUp(let nickname, let email, let password):
             return .requestParameters(parameters: ["nickname": nickname,"email": email, "password": password], encoding: JSONEncoding.prettyPrinted)
-        case .verification(let code):
-            return .requestParameters(parameters: ["code": code], encoding: JSONEncoding.prettyPrinted)
+        case .verification(let email):
+            return .requestParameters(parameters: ["email": email], encoding: JSONEncoding.prettyPrinted)
         case .uploadImage(let image):
             return .uploadMultipart([Moya.MultipartFormData(provider: .data(image ?? Data()), name: "image", fileName: "image.jpg", mimeType: "image/jpg")])
         case .loadImage(let image):
