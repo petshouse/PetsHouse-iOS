@@ -31,8 +31,8 @@ class Service {
             }.catchError{ [unowned self] in return .just(self.setNetworkError($0))}
     }
     
-    func verification(_ code: String) -> Observable<Network> {
-        return provider.rx.request(.verification(code))
+    func verification(_ email: String) -> Observable<Network> {
+        return provider.rx.request(.verification(email))
             .filterSuccessfulStatusCodes()
             .asObservable()
             .map { _ -> Network in
