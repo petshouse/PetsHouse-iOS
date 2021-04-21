@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import SnapKit
 import Then
+import DropDown
 
 class MainViewController: UIViewController {
     
@@ -24,7 +25,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var sequencePicker: UIPickerView!
     @IBOutlet weak var areaPicker: UIPickerView!
     @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var writeBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -33,12 +35,28 @@ class MainViewController: UIViewController {
         bindViewModel()
         picker()
     }
-    
+
     func picker() {
-        let picker = UIPickerView()
-        picker.delegate = self
+        Observable.just(["최신순", "우선순위"])
+            .bind(to: sequencePicker.rx.itemTitles) { _, item in
+                return "\(item)"
+            }.disposed(by: disposeBag)
+        
+        sequencePicker.rx.itemSelected
+            .subscribe(onNext: { (row, value) in
+                NSLog("selected: \(row)")
+            }).disposed(by: disposeBag)
+        
+        Observable.just(["서울", "대전", "광주", "대구", "부산", "울산", "제주", "강원", "경기", "전남","전북", "경남","경북","충남","충북"])
+            .bind(to: areaPicker.rx.itemTitles) { _, item in
+                return "\(item)"
+            }.disposed(by: disposeBag)
+        
+        areaPicker.rx.itemSelected.subscribe(onNext: { (row, value) in
+            NSLog("selected: \(row)")
+        }).disposed(by: disposeBag)
     }
- 
+
     
     func bindViewModel() {
         let input = MainViewModel.Input(loadData: loadData.asSignal(onErrorJustReturn: ()))
@@ -65,6 +83,10 @@ class MainViewController: UIViewController {
             actionSheet.addAction(action)
             self.present(actionSheet, animated: true, completion: nil)
         }).disposed(by: self.disposeBag)
+        
+        writeBtn.rx.tap.subscribe(onNext: { _ in
+            self.pushVC("writeVC")
+        }).disposed(by: disposeBag)
         
         tableView.delegate = self
         tableView.dataSource = nil
