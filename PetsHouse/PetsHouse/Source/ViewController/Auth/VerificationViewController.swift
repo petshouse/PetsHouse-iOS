@@ -14,6 +14,9 @@ import Then
 
 class VerificationViewController: UIViewController {
     
+    private let disposeBag = DisposeBag()
+    private let viewModel = VertificationViewModel()
+    
     private let textLogo = UIImageView().then {
         $0.image = UIImage(named: "Text Logo")
     }
@@ -34,7 +37,6 @@ class VerificationViewController: UIViewController {
         $0.setTitleColor(.white, for: .normal)
         $0.layer.cornerRadius = 15
     }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,6 +48,10 @@ class VerificationViewController: UIViewController {
         view.addSubview(nextBtn)
         
         constantraint()
+    }
+    
+    func bindViewModel() {
+        let input = VertificationViewModel.Input(code: <#T##Driver<String>#>, doneTap: <#T##Driver<Void>#>)
     }
     
     private func constantraint() {

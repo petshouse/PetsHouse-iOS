@@ -15,7 +15,7 @@ class VertificationViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     
     struct Input {
-        let email: Driver<String>
+        let code: Driver<String>
         let doneTap: Driver<Void>
     }
     struct Output {
@@ -25,12 +25,12 @@ class VertificationViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         let api = Service()
-        let info = input.email
+        let info = input.code
         let isEnable = info.map { !$0.isEmpty }
         let result = PublishSubject<String>()
         
-        input.doneTap.asObservable().withLatestFrom(info).subscribe(onNext: { [weak self] email in
-            api.verification(email).subscribe(onNext: { response in
+        input.doneTap.asObservable().withLatestFrom(info).subscribe(onNext: { [weak self] code in
+            api.verification(code).subscribe(onNext: { response in
                 switch response {
                 case .success:
                     result.onCompleted()
