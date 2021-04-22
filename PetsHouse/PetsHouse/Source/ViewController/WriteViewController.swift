@@ -12,6 +12,7 @@ import RxCocoa
 import SnapKit
 import Then
 import DropDown
+import KMPlaceholderTextView
 
 class WriteViewController: UIViewController {
     
@@ -27,7 +28,9 @@ class WriteViewController: UIViewController {
     private let area = UIButton().then {
         $0.setTitle("지역 선택", for: .normal)
     }
-    private let writeTxtView = UITextView()
+    private let writeTxtView = KMPlaceholderTextView().then {
+        $0.placeholder = "내용을 입력해주세요"
+    }
     private let animalImage = UIImageView()
     private let photoImage = UIImageView().then {
         $0.image = UIImage(named: "library")
@@ -107,24 +110,7 @@ class WriteViewController: UIViewController {
             self.present(imagePicker, animated: true, completion: nil)
         }).disposed(by: disposeBag)
         
-        writeTxtView.delegate = self
-        writeTxtView.text = "내용을 입력해주세요"
-        textViewDidBeginEditing(writeTxtView)
-        textViewDidEndEditing(writeTxtView)
         
-    }
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
-            textView.text = nil
-            textView.textColor = UIColor.black
-        }
-    }
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-        textView.text = "내용을 입력해주세요"
-        textView.textColor = UIColor.lightGray
-        }
     }
 
     
@@ -178,7 +164,7 @@ class WriteViewController: UIViewController {
 
 }
 
-extension WriteViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate,UITextViewDelegate {
+extension WriteViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
