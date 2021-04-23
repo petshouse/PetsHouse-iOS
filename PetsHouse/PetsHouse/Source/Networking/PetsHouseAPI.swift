@@ -11,7 +11,8 @@ import Moya
 enum PetsHouseAPI {
     case signIn(_ email: String, _ password: String)
     case signUp(_ nickname: String, _ email: String, _ password: String)
-    case verification(_ email: String)
+    case emailSend(_ email: String)
+    case verification(_ code: String, _ email: String)
     case uploadImage(_ image: Data?)
     case loadImage(_ image: Data?)
     case loadPost
@@ -30,8 +31,10 @@ extension PetsHouseAPI: TargetType {
             return "/api/v1/login"
         case .signUp:
             return "/api/v1/auth "
-        case .verification:
+        case .emailSend:
             return "/api/v1/emailsend"
+        case .verification(let code, let email):
+            return "/api/v1/verification/\(code)/\(email)"
         case .uploadImage:
             return "/api/v1/media"
         case .loadImage:
@@ -45,9 +48,9 @@ extension PetsHouseAPI: TargetType {
 
     var method: Moya.Method {
         switch self {
-        case .signIn,.signUp,.verification,.uploadImage, .writePost:
+        case .signIn,.signUp,.emailSend,.uploadImage, .writePost:
             return .post
-        case .loadPost, .loadImage:
+        case .loadPost, .loadImage, .verification:
             return .get
         }
     }
@@ -62,7 +65,7 @@ extension PetsHouseAPI: TargetType {
             return .requestParameters(parameters: ["email": email, "password": password], encoding: JSONEncoding.prettyPrinted)
         case .signUp(let nickname, let email, let password):
             return .requestParameters(parameters: ["nickname": nickname,"email": email, "password": password], encoding: JSONEncoding.prettyPrinted)
-        case .verification(let email):
+        case .emailSend(let email):
             return .requestParameters(parameters: ["email": email], encoding: JSONEncoding.prettyPrinted)
         case .uploadImage(let image):
             return .uploadMultipart([Moya.MultipartFormData(provider: .data(image ?? Data()), name: "image", fileName: "image.jpg", mimeType: "image/jpg")])
@@ -79,7 +82,7 @@ extension PetsHouseAPI: TargetType {
     
     var headers: [String : String]? {
         switch self {
-        case .signIn, .signUp,.verification:
+        case .signIn, .signUp,.emailSend, .verification:
             return nil
         case .uploadImage, .loadImage, .loadPost, .writePost:
             guard let token = TokenManager.currentToken?.accessToken else { return nil }
