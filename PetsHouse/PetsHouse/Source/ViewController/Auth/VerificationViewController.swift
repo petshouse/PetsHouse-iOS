@@ -29,7 +29,7 @@ class VerificationViewController: UIViewController {
         $0.placeholder = "인증코드 입력"
         $0.font = UIFont(name: "BMJUA", size: 20)
         $0.layer.cornerRadius = 25
-        $0.layer.borderColor = UIColor.black.cgColor
+        $0.borderStyle = .roundedRect
     }
     private let nextBtn = UIButton().then {
         $0.backgroundColor = .mainColor
@@ -50,10 +50,6 @@ class VerificationViewController: UIViewController {
         constantraint()
     }
     
-    func bindViewModel() {
-        let input = VertificationViewModel.Input(code: <#T##Driver<String>#>, doneTap: <#T##Driver<Void>#>)
-    }
-    
     private func constantraint() {
         textLogo.snp.makeConstraints { (make) in
             make.centerX.equalTo(view)
@@ -68,8 +64,9 @@ class VerificationViewController: UIViewController {
         codeTxtField.snp.makeConstraints{ (make) in
             make.centerX.equalTo(view)
             make.top.equalTo(verificationLbl.snp.bottom).offset(80)
-            make.leading.equalTo(130)
-            make.trailing.equalTo(-130)
+            make.leading.equalTo(90)
+            make.trailing.equalTo(-90)
+            make.height.equalTo(50)
         }
         nextBtn.snp.makeConstraints { (make) in
             make.centerX.equalTo(view)
