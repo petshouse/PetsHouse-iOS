@@ -50,6 +50,27 @@ class SendEmailViewController: UIViewController {
         constantraint()
     }
     
+    private func bindViewModel() {
+        let input = SendEmailViewModel.Input(email: emailTxtField.rx.text.orEmpty.asDriver(),
+                                             doneTap: nextBtn.rx.tap.asDriver())
+        let output = viewModel.transform(input: input)
+
+        output.isEnable.drive(nextBtn.rx.isEnabled).disposed(by: disposeBag)
+    
+        output.result.emit(onNext: { [unowned self] _ in
+            print("error")
+            nextBtn.isEnabled = true
+        }, onCompleted: {[unowned self] in pushData()}
+        ).disposed(by: disposeBag)
+    }
+    
+    func pushData() {
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "pinCode") as? VerificationViewController else { return }
+        vc.email = emailTxtField.text!
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
     private func constantraint() {
         logoImage.snp.makeConstraints{ (make) in
             make.centerX.equalTo(view)
