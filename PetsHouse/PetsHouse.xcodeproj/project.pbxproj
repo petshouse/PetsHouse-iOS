@@ -14,6 +14,9 @@
 		9F7DCAC625F995CA00450A79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F7DCAC425F995CA00450A79 /* Main.storyboard */; };
 		9F7DCAC825F995CE00450A79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F7DCAC725F995CE00450A79 /* Assets.xcassets */; };
 		9F7DCACB25F995CE00450A79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F7DCAC925F995CE00450A79 /* LaunchScreen.storyboard */; };
+		9F8311E6263117AB005B484E /* SendEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8311E5263117AB005B484E /* SendEmailViewModel.swift */; };
+		9F8311E926311802005B484E /* SendEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8311E826311802005B484E /* SendEmailViewController.swift */; };
+		9F8311EC2631189E005B484E /* VerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8311EB2631189E005B484E /* VerificationViewModel.swift */; };
 		9F8403342611C10200F6973B /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8403332611C10200F6973B /* WriteViewController.swift */; };
 		9F8403CE2614195700F6973B /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8403CD2614195600F6973B /* TokenModel.swift */; };
 		9F84047D261567DF00F6973B /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F84047C261567DF00F6973B /* Networking.swift */; };
@@ -45,6 +48,9 @@
 		9F7DCAC725F995CE00450A79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F7DCACA25F995CE00450A79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F7DCACC25F995CE00450A79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F8311E5263117AB005B484E /* SendEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEmailViewModel.swift; sourceTree = "<group>"; };
+		9F8311E826311802005B484E /* SendEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEmailViewController.swift; sourceTree = "<group>"; };
+		9F8311EB2631189E005B484E /* VerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewModel.swift; sourceTree = "<group>"; };
 		9F8403332611C10200F6973B /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		9F8403CD2614195600F6973B /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
 		9F84047C261567DF00F6973B /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -127,6 +133,28 @@
 			path = PetsHouse;
 			sourceTree = "<group>";
 		};
+		9F8311E12631011A005B484E /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				9FE4A0DF2609CD6500D668F0 /* SignUpViewController.swift */,
+				9F8C16E6260B02C300F8D17B /* SignInViewController.swift */,
+				9F879CED261AB0E4006FD55E /* VerificationViewController.swift */,
+				9F8311E826311802005B484E /* SendEmailViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		9F8311E226310133005B484E /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				9F879CAC26172479006FD55E /* SignUpViewModel.swift */,
+				9F88CEDB261FF9CE0081BB5C /* SignInViewModel.swift */,
+				9F8311E5263117AB005B484E /* SendEmailViewModel.swift */,
+				9F8311EB2631189E005B484E /* VerificationViewModel.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		9F879CB326172E2A006FD55E /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,10 +186,9 @@
 		9FE4A0B82608DD8000D668F0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				9F8311E226310133005B484E /* Auth */,
 				9FE4A0C82608DEA400D668F0 /* ViewModelType.swift */,
-				9F879CAC26172479006FD55E /* SignUpViewModel.swift */,
 				9F879CBD2619A864006FD55E /* WriteViewModel.swift */,
-				9F88CEDB261FF9CE0081BB5C /* SignInViewModel.swift */,
 				9F88CF292625A0D90081BB5C /* MainViewModel.swift */,
 			);
 			path = ViewModel;
@@ -170,10 +197,8 @@
 		9FE4A0B92608DD8800D668F0 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				9FE4A0DF2609CD6500D668F0 /* SignUpViewController.swift */,
-				9F8C16E6260B02C300F8D17B /* SignInViewController.swift */,
+				9F8311E12631011A005B484E /* Auth */,
 				9F8403332611C10200F6973B /* WriteViewController.swift */,
-				9F879CED261AB0E4006FD55E /* VerificationViewController.swift */,
 				9F88CEF52623E7E90081BB5C /* MainViewController.swift */,
 			);
 			path = ViewController;
@@ -371,6 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F8311E926311802005B484E /* SendEmailViewController.swift in Sources */,
 				9F88CEF62623E7E90081BB5C /* MainViewController.swift in Sources */,
 				9F84047D261567DF00F6973B /* Networking.swift in Sources */,
 				9F879CB02617253B006FD55E /* Service.swift in Sources */,
@@ -380,6 +406,7 @@
 				9F88CEDC261FF9CE0081BB5C /* SignInViewModel.swift in Sources */,
 				9FE4A0E02609CD6500D668F0 /* SignUpViewController.swift in Sources */,
 				9FE4A0E8260A014F00D668F0 /* UIColor.swift in Sources */,
+				9F8311E6263117AB005B484E /* SendEmailViewModel.swift in Sources */,
 				9F8404812615680100F6973B /* PetsHouseAPI.swift in Sources */,
 				9F879CEE261AB0E4006FD55E /* VerificationViewController.swift in Sources */,
 				9F879CBE2619A864006FD55E /* WriteViewModel.swift in Sources */,
@@ -390,6 +417,7 @@
 				9F879CC9261AA693006FD55E /* MainModel.swift in Sources */,
 				9F8403342611C10200F6973B /* WriteViewController.swift in Sources */,
 				9F879CB826173116006FD55E /* StoregaeManager.swift in Sources */,
+				9F8311EC2631189E005B484E /* VerificationViewModel.swift in Sources */,
 				9F879CAD26172479006FD55E /* SignUpViewModel.swift in Sources */,
 				9FE4A0C92608DEA400D668F0 /* ViewModelType.swift in Sources */,
 				9F88CF2A2625A0DA0081BB5C /* MainViewModel.swift in Sources */,
