@@ -33,8 +33,8 @@ extension PetsHouseAPI: TargetType {
             return "/api/v1/auth "
         case .emailSend:
             return "/api/v1/emailsend"
-        case .verification(let code, let email):
-            return "/api/v1/verification/\(code)/\(email)"
+        case .verification:
+            return "/api/v1/verification"
         case .uploadImage:
             return "/api/v1/media"
         case .loadImage:
