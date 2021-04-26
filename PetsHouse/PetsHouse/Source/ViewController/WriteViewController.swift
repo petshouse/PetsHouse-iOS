@@ -25,9 +25,7 @@ class WriteViewController: UIViewController {
         $0.placeholder = "제목을 입력해주세요"
         $0.font = UIFont(name: "BMJUA", size: 25)
     }
-    private let area = UIButton().then {
-        $0.setTitle("지역 선택", for: .normal)
-    }
+    private let areaPicker = UIPickerView()
     private let writeTxtView = KMPlaceholderTextView().then {
         $0.placeholder = "내용을 입력해주세요"
     }
@@ -60,7 +58,7 @@ class WriteViewController: UIViewController {
         // Do any additional setup after loading the view.
 
         view.addSubview(titleTxtField)
-        view.addSubview(area)
+        view.addSubview(areaPicker)
         view.addSubview(writeTxtView)
         view.addSubview(animalImage)
         view.addSubview(photoImage)
@@ -71,6 +69,17 @@ class WriteViewController: UIViewController {
         bindViewModel()
         setUI()
 
+    }
+    
+    private func piker() {
+        Observable.just(["서울", "대전", "광주", "대구", "부산", "울산", "제주", "강원", "경기", "전남","전북", "경남","경북","충남","충북"])
+            .bind(to: areaPicker.rx.itemTitles) { _, item in
+                return "\(item)"
+            }.disposed(by: disposeBag)
+        areaPicker.rx.itemSelected.subscribe(onNext: { (row, value) in
+            NSLog("selected: \(row)")
+            }).disposed(by: disposeBag)
+        
     }
     
     func bindViewModel() {
@@ -84,15 +93,6 @@ class WriteViewController: UIViewController {
         output.result.emit(onCompleted: { [unowned self] in
             navigationController?.popViewController(animated: true)
         }).disposed(by: disposeBag)
-    }
-    
-    func dropDown() {
-        areaDropDown.dataSource = ["서울", "대전", "광주", "대구", "부산", "울산", "제주", "강원", "경기", "전남","전북", "경남","경북","충남","충북"]
-        areaDropDown.show()
-        areaDropDown.anchorView = area
-        areaDropDown.bottomOffset = CGPoint(x: 0, y:(areaDropDown.anchorView?.plainView.bounds.height)!)
-        areaDropDown.selectedTextColor = .white
-        areaDropDown.selectionBackgroundColor = .mainColor
     }
     
     func setUI() {
@@ -109,8 +109,6 @@ class WriteViewController: UIViewController {
             imagePicker.sourceType = .photoLibrary
             self.present(imagePicker, animated: true, completion: nil)
         }).disposed(by: disposeBag)
-        
-        
     }
 
     
@@ -123,7 +121,7 @@ class WriteViewController: UIViewController {
             make.trailing.equalTo(-30)
         }
         
-        area.snp.makeConstraints{ (make) in
+        areaPicker.snp.makeConstraints{ (make) in
             make.centerX.equalTo(view)
             make.top.equalTo(titleTxtField.snp.bottom).offset(15)
             make.leading.equalTo(30)
@@ -132,7 +130,7 @@ class WriteViewController: UIViewController {
 
         writeTxtView.snp.makeConstraints{ (make) in
             make.centerX.equalTo(view)
-            make.top.equalTo(area.snp.bottom).offset(20)
+            make.top.equalTo(areaPicker.snp.bottom).offset(20)
             make.leading.equalTo(30)
             make.trailing.equalTo(-30)
         }
