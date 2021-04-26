@@ -107,7 +107,7 @@ class SignUpViewController: UIViewController {
         
         output.isEnable.drive(signUpBtn.rx.isEnabled).disposed(by: disposeBag)
         output.result.emit(onNext: { _ in
-            self.pushVC("verificationVC")
+            self.pushVC("sendEmailVC")
         }).disposed(by: disposeBag)
     }
     
