@@ -14,4 +14,6 @@ class MainModel: Codable {
     let description: String
     let media: String
     let date: String
+    let totalJoin: Int
+    let area: String
 }
