@@ -21,34 +21,16 @@ class WriteViewController: UIViewController {
     
     private let editImageData = BehaviorRelay<Data?>(value: nil)
 
-    private let titleTxtField = UITextField().then {
-        $0.placeholder = "제목을 입력해주세요"
-        $0.font = UIFont(name: "BMJUA", size: 25)
-    }
-    private let areaPicker = UIPickerView()
-    private let writeTxtView = KMPlaceholderTextView().then {
-        $0.placeholder = "내용을 입력해주세요"
-    }
-    private let animalImage = UIImageView()
-    private let photoImage = UIImageView().then {
-        $0.image = UIImage(named: "library")
-    }
-    private let photoBtn = UIButton().then {
-        $0.setTitle("사진 선택하기", for: .normal)
-        $0.setTitleColor(.black, for: .normal)
-    }
-    private let cameraBtn = UIButton().then {
-        $0.clipsToBounds = true
-        $0.imageView?.backgroundColor = .white
-        $0.setImage(UIImage(named: "Main_Logo"), for: UIControl.State.normal)
-    }
-    private let cameraLbl = UILabel().then {
-        $0.text = "사진 촬영하기"
-        $0.textColor = .black
-        $0.font = UIFont(name: "BMJUA", size: 20)
-    }
-    private let postBtn = UIBarButtonItem()
-    private let backBtn = UIBarItem()
+ 
+    @IBOutlet weak var titleTxtField: UITextField!
+    @IBOutlet weak var areaPicker: UIPickerView!
+    @IBOutlet weak var writeTxtView: KMPlaceholderTextView!
+    @IBOutlet weak var libraryImage: UIImageView!
+    @IBOutlet weak var photoBtn: UIButton!
+    @IBOutlet weak var animalImage: UIImageView!
+    @IBOutlet weak var cameraBtn: UIButton!
+    @IBOutlet weak var cameraLbl: UILabel!
+    @IBOutlet weak var postBtn: UIBarButtonItem!
     
     let areaDropDown = DropDown()
     
@@ -57,21 +39,12 @@ class WriteViewController: UIViewController {
 
         // Do any additional setup after loading the view.
 
-        view.addSubview(titleTxtField)
-        view.addSubview(areaPicker)
-        view.addSubview(writeTxtView)
-        view.addSubview(animalImage)
-        view.addSubview(photoImage)
-        view.addSubview(photoBtn)
-        view.addSubview(cameraBtn)
-
-        constantraint()
         bindViewModel()
         setUI()
-
+        picker()
     }
     
-    private func piker() {
+    private func picker() {
         Observable.just(["서울", "대전", "광주", "대구", "부산", "울산", "제주", "강원", "경기", "전남","전북", "경남","경북","충남","충북"])
             .bind(to: areaPicker.rx.itemTitles) { _, item in
                 return "\(item)"
@@ -109,56 +82,10 @@ class WriteViewController: UIViewController {
             imagePicker.sourceType = .photoLibrary
             self.present(imagePicker, animated: true, completion: nil)
         }).disposed(by: disposeBag)
-    }
-
-    
-    func constantraint() {
-     
-        titleTxtField.snp.makeConstraints{ (make) in
-            make.centerX.equalTo(view)
-            make.top.equalTo(view.frame.height/7)
-            make.leading.equalTo(30)
-            make.trailing.equalTo(-30)
-        }
         
-        areaPicker.snp.makeConstraints{ (make) in
-            make.centerX.equalTo(view)
-            make.top.equalTo(titleTxtField.snp.bottom).offset(15)
-            make.leading.equalTo(30)
-            make.leading.equalTo(-150)
-        }
-
-        writeTxtView.snp.makeConstraints{ (make) in
-            make.centerX.equalTo(view)
-            make.top.equalTo(areaPicker.snp.bottom).offset(20)
-            make.leading.equalTo(30)
-            make.trailing.equalTo(-30)
-        }
-        animalImage.snp.makeConstraints { (make) in
-            make.centerX.equalTo(view)
-            make.top.equalTo(writeTxtView.snp.bottom).offset(15)
-            make.leading.equalTo(30)
-            make.trailing.equalTo(-30)
-        }
-        photoImage.snp.makeConstraints{ (make) in
-            make.centerX.equalTo(view)
-            make.top.equalTo(animalImage.snp.bottom).offset(13)
-            make.leading.equalTo(30)
-        }
-        photoBtn.snp.makeConstraints{ (make) in
-            make.centerX.equalTo(view)
-            make.leading.equalTo(photoImage.snp.right).offset(7)
-            make.top.equalTo(animalImage.snp.bottom).offset(13)
-        }
-        cameraLbl.snp.makeConstraints{ (make) in
-            make.centerX.equalTo(view)
-            make.bottom.equalTo(view.frame.height/2)
-        }
-        cameraBtn.snp.makeConstraints{ (make) in
-            make.centerX.equalTo(view)
-            make.bottom.equalTo(cameraLbl.snp.top).offset(10)
-        }
+        self.navigationController?.navigationBar.tintColor = .mainColor
     }
+
 
 }
 
