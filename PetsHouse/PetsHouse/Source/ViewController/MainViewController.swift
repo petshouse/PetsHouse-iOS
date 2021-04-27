@@ -21,11 +21,11 @@ class MainViewController: UIViewController {
     private let loadData = BehaviorRelay<Void>(value: ())
     var selectIndexPath = PublishRelay<Int>()
     
-    @IBOutlet weak var logoView: UIImageView!
     @IBOutlet weak var sequencePicker: UIPickerView!
     @IBOutlet weak var areaPicker: UIPickerView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var writeBtn: UIButton!
+    @IBOutlet weak var writeBtn: UIBarButtonItem!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,11 +83,7 @@ class MainViewController: UIViewController {
             actionSheet.addAction(action)
             self.present(actionSheet, animated: true, completion: nil)
         }).disposed(by: self.disposeBag)
-        
-        writeBtn.rx.tap.subscribe(onNext: { _ in
-            self.pushVC("writeVC")
-        }).disposed(by: disposeBag)
-        
+
         tableView.delegate = self
         tableView.dataSource = nil
         tableView.register(MainCell.self, forCellReuseIdentifier: "mainCell")
@@ -96,6 +92,6 @@ class MainViewController: UIViewController {
     
 }
 
-extension MainViewController: UIPickerViewDelegate, UITableViewDelegate {
+extension MainViewController: UITableViewDelegate {
 
 }
