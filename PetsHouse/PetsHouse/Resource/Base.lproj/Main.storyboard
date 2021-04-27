@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4TX-9L-QCd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="car-Hj-a8I">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -41,7 +41,7 @@
         <!--Send Email View Controller-->
         <scene sceneID="W9v-xF-K6L">
             <objects>
-                <viewController id="4ma-Qh-q6x" customClass="SendEmailViewController" customModule="PetsHouse" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sendEmailVC" id="4ma-Qh-q6x" customClass="SendEmailViewController" customModule="PetsHouse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5H1-dZ-kb0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,7 +51,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XQI-tH-eYX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-604" y="63"/>
+            <point key="canvasLocation" x="-646" y="31"/>
         </scene>
         <!--Verification View Controller-->
         <scene sceneID="lvC-HT-5X3">
@@ -84,7 +84,7 @@
             </objects>
             <point key="canvasLocation" x="1948" y="59"/>
         </scene>
-        <!--Main-->
+        <!--Main View Controller-->
         <scene sceneID="lzT-4e-8Cs">
             <objects>
                 <viewController storyboardIdentifier="MainVC" id="elP-7S-ADO" customClass="MainViewController" customModule="PetsHouse" customModuleProvider="target" sceneMemberID="viewController">
@@ -92,53 +92,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Text Logo" translatesAutoresizingMaskIntoConstraints="NO" id="B85-C9-iMS">
-                                <rect key="frame" x="127" y="44" width="160" height="65"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="XQQ-Sp-XFG"/>
-                                    <constraint firstAttribute="height" constant="65" id="ofI-Xt-1de"/>
-                                </constraints>
-                            </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SeA-3P-nyF">
-                                <rect key="frame" x="0.0" y="210" width="414" height="603"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SeA-3P-nyF">
+                                <rect key="frame" x="0.0" y="196" width="414" height="617"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="mainCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="iok-vU-pBC" customClass="MainCell" customModule="PetsHouse" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iok-vU-pBC" id="Xwi-dF-5Cv">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jx6-MF-xqc">
-                                <rect key="frame" x="324" y="44" width="70" height="65"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="sPh-9z-tBG"/>
-                                    <constraint firstAttribute="height" constant="65" id="yWE-Pb-9l9"/>
-                                </constraints>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="글쓰기">
-                                            <attributes>
-                                                <color key="NSColor" red="1" green="0.5966724753" blue="0.80001658200000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <font key="NSFont" size="18" name="BMJUAOTF"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
-                            </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="15n-j7-qtp">
-                                <rect key="frame" x="20" y="117" width="180" height="90"/>
+                                <rect key="frame" x="20" y="103" width="180" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="4Z6-SX-9j7"/>
                                     <constraint firstAttribute="width" constant="180" id="642-cq-Iqb"/>
                                 </constraints>
                             </pickerView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q56-iX-CiH">
-                                <rect key="frame" x="214" y="117" width="180" height="90"/>
+                                <rect key="frame" x="214" y="103" width="180" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="FZO-PA-QdO"/>
                                     <constraint firstAttribute="width" constant="180" id="uyF-aX-Rs2"/>
@@ -148,32 +124,29 @@
                         <viewLayoutGuide key="safeArea" id="WLi-p9-Rf8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="SeA-3P-nyF" firstAttribute="centerX" secondItem="B85-C9-iMS" secondAttribute="centerX" id="3Sz-Mx-slV"/>
                             <constraint firstItem="SeA-3P-nyF" firstAttribute="bottom" secondItem="WLi-p9-Rf8" secondAttribute="bottom" id="7ib-X0-swY"/>
-                            <constraint firstItem="15n-j7-qtp" firstAttribute="top" secondItem="B85-C9-iMS" secondAttribute="bottom" constant="8" symbolic="YES" id="MfB-Ts-bQN"/>
                             <constraint firstItem="SeA-3P-nyF" firstAttribute="top" secondItem="15n-j7-qtp" secondAttribute="bottom" constant="3" id="MgG-ou-fLv"/>
-                            <constraint firstItem="B85-C9-iMS" firstAttribute="centerX" secondItem="2xx-cJ-2A8" secondAttribute="centerX" id="TuK-Zd-skJ"/>
                             <constraint firstItem="SeA-3P-nyF" firstAttribute="leading" secondItem="2xx-cJ-2A8" secondAttribute="leading" id="WBx-cT-dHO"/>
                             <constraint firstItem="15n-j7-qtp" firstAttribute="leading" secondItem="WLi-p9-Rf8" secondAttribute="leading" constant="20" id="Whh-fo-FeQ"/>
-                            <constraint firstItem="B85-C9-iMS" firstAttribute="top" secondItem="WLi-p9-Rf8" secondAttribute="top" id="bcc-39-pAT"/>
-                            <constraint firstItem="WLi-p9-Rf8" firstAttribute="trailing" secondItem="Jx6-MF-xqc" secondAttribute="trailing" constant="20" id="bkN-LE-U0S"/>
-                            <constraint firstItem="Jx6-MF-xqc" firstAttribute="top" secondItem="WLi-p9-Rf8" secondAttribute="top" id="fkx-dO-tSC"/>
+                            <constraint firstItem="q56-iX-CiH" firstAttribute="top" secondItem="WLi-p9-Rf8" secondAttribute="top" constant="15" id="blt-KU-A30"/>
+                            <constraint firstItem="15n-j7-qtp" firstAttribute="top" secondItem="WLi-p9-Rf8" secondAttribute="top" constant="15" id="bqY-zc-tR9"/>
                             <constraint firstItem="SeA-3P-nyF" firstAttribute="top" secondItem="q56-iX-CiH" secondAttribute="bottom" constant="3" id="fxi-af-8Ox"/>
                             <constraint firstItem="WLi-p9-Rf8" firstAttribute="trailing" secondItem="q56-iX-CiH" secondAttribute="trailing" constant="20" id="zzX-ss-HsT"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Main" image="house.fill" catalog="system" id="lPu-kM-EkC"/>
+                    <navigationItem key="navigationItem" id="d4t-Fb-CX7">
+                        <barButtonItem key="rightBarButtonItem" title="글쓰기" id="Fjb-XC-d9X"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="areaPicker" destination="q56-iX-CiH" id="i2Q-FU-Vbd"/>
-                        <outlet property="logoView" destination="B85-C9-iMS" id="biB-mf-tgd"/>
                         <outlet property="sequencePicker" destination="15n-j7-qtp" id="rUP-r3-jAk"/>
                         <outlet property="tableView" destination="SeA-3P-nyF" id="jNT-54-PUq"/>
-                        <outlet property="writeBtn" destination="Jx6-MF-xqc" id="dBX-bt-y7v"/>
+                        <outlet property="writeBtn" destination="Fjb-XC-d9X" id="Sen-zM-8fw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kk1-an-IAM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1947.826086956522" y="-660.26785714285711"/>
+            <point key="canvasLocation" x="2857.971014492754" y="-660.26785714285711"/>
         </scene>
         <!--News-->
         <scene sceneID="sEG-eV-chH">
@@ -189,7 +162,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hoC-EX-N5H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2767" y="-660"/>
+            <point key="canvasLocation" x="3676.811594202899" y="-660.26785714285711"/>
         </scene>
         <!--Profile-->
         <scene sceneID="ZP4-4D-zcv">
@@ -205,7 +178,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nbG-4l-kVh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3625" y="-660"/>
+            <point key="canvasLocation" x="4534.7826086956529" y="-660.26785714285711"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="v40-bZ-YPP">
@@ -224,7 +197,7 @@
                         </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
-                        <segue destination="elP-7S-ADO" kind="relationship" relationship="viewControllers" id="7oC-tU-NFx"/>
+                        <segue destination="Omc-6a-zdk" kind="relationship" relationship="viewControllers" id="7oC-tU-NFx"/>
                         <segue destination="Ju5-Ww-6Dp" kind="relationship" relationship="viewControllers" id="T0c-1W-RTi"/>
                         <segue destination="38X-bh-ifR" kind="relationship" relationship="viewControllers" id="Muy-9B-mis"/>
                     </connections>
@@ -233,9 +206,27 @@
             </objects>
             <point key="canvasLocation" x="2767" y="-1401"/>
         </scene>
+        <!--Main-->
+        <scene sceneID="eLi-wt-Laz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Omc-6a-zdk" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Main" image="house.fill" catalog="system" id="lPu-kM-EkC"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jbi-V6-xoh">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="elP-7S-ADO" kind="relationship" relationship="rootViewController" id="Wnr-90-uRM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xTf-W1-whW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1947.826086956522" y="-660.26785714285711"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="Text Logo" width="484" height="140"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="newspaper.fill" catalog="system" width="128" height="111"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
