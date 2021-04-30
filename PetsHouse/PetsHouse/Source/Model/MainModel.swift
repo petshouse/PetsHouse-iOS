@@ -8,7 +8,8 @@
 import Foundation
 
 class MainModel: Codable {
-    let userId: String
+    let num: Int
+    let user: Int
     let nickname: String
     let title: String
     let description: String
