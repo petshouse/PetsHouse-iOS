@@ -84,8 +84,6 @@ class MainViewController: UIViewController {
             self.present(actionSheet, animated: true, completion: nil)
         }).disposed(by: self.disposeBag)
 
-        tableView.delegate = self
-        tableView.dataSource = nil
         tableView.register(MainCell.self, forCellReuseIdentifier: "mainCell")
         tableView.rowHeight = 220
     }
