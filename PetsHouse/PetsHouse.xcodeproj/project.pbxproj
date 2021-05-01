@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4C2FC0B10D8D4613DC5A6BFC /* Pods_PetsHouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB15DB45C3F4D9DBD1961558 /* Pods_PetsHouse.framework */; };
+		9F6362B2263924E70025FCCF /* MypageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6362B1263924E70025FCCF /* MypageViewController.swift */; };
 		9F6BEBCE262AC025000BC386 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BEBCD262AC025000BC386 /* MainCell.swift */; };
 		9F7DCABF25F995CA00450A79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7DCABE25F995CA00450A79 /* AppDelegate.swift */; };
 		9F7DCAC125F995CA00450A79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7DCAC025F995CA00450A79 /* SceneDelegate.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F6362B1263924E70025FCCF /* MypageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageViewController.swift; sourceTree = "<group>"; };
 		9F6BEBCD262AC025000BC386 /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
 		9F7DCABB25F995CA00450A79 /* PetsHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetsHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F7DCABE25F995CA00450A79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				9F8311E12631011A005B484E /* Auth */,
 				9F8403332611C10200F6973B /* WriteViewController.swift */,
 				9F88CEF52623E7E90081BB5C /* MainViewController.swift */,
+				9F6362B1263924E70025FCCF /* MypageViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				9F7DCABF25F995CA00450A79 /* AppDelegate.swift in Sources */,
 				9F879CB526172E37006FD55E /* TokenManager.swift in Sources */,
 				9F7DCAC125F995CA00450A79 /* SceneDelegate.swift in Sources */,
+				9F6362B2263924E70025FCCF /* MypageViewController.swift in Sources */,
 				9F879CC9261AA693006FD55E /* MainModel.swift in Sources */,
 				9F8403342611C10200F6973B /* WriteViewController.swift in Sources */,
 				9F879CB826173116006FD55E /* StoregaeManager.swift in Sources */,
