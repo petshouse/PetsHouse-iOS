@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="car-Hj-a8I">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +11,7 @@
         <!--Sign In View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SignInViewController" customModule="PetsHouse" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signInVC" id="BYZ-38-t0r" customClass="SignInViewController" customModule="PetsHouse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,7 +26,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="pQq-wz-KDK">
             <objects>
-                <viewController id="YnE-bC-5z5" customClass="SignUpViewController" customModule="PetsHouse" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signUpVC" id="YnE-bC-5z5" customClass="SignUpViewController" customModule="PetsHouse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a24-kF-OWS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -201,7 +201,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="mainCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="iok-vU-pBC" customClass="MainCell" customModule="PetsHouse" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iok-vU-pBC" id="Xwi-dF-5Cv">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -209,6 +209,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="elP-7S-ADO" id="D4M-i4-5qL"/>
+                                    <outlet property="delegate" destination="elP-7S-ADO" id="E2y-lg-XeF"/>
+                                </connections>
                             </tableView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="15n-j7-qtp">
                                 <rect key="frame" x="20" y="103" width="180" height="90"/>
@@ -261,7 +265,7 @@
         <!--News-->
         <scene sceneID="sEG-eV-chH">
             <objects>
-                <viewController id="Ju5-Ww-6Dp" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newsVC" id="Ju5-Ww-6Dp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0rh-h9-P63">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -277,7 +281,7 @@
         <!--Profile-->
         <scene sceneID="ZP4-4D-zcv">
             <objects>
-                <viewController id="38X-bh-ifR" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mypageVC" id="38X-bh-ifR" customClass="MypageViewController" customModule="PetsHouse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QSr-KR-BRc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -319,7 +323,7 @@
         <!--Main-->
         <scene sceneID="eLi-wt-Laz">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Omc-6a-zdk" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mainVC" automaticallyAdjustsScrollViewInsets="NO" id="Omc-6a-zdk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Main" image="house.fill" catalog="system" id="lPu-kM-EkC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jbi-V6-xoh">
