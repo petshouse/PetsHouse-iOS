@@ -17,23 +17,28 @@ class MypageViewController: UIViewController {
     private let logoView = UIImageView().then {
         $0.image = UIImage(named: "Text Logo")
     }
-    private let profileImage = UIImageView().then {
-        $0.clipsToBounds = true
-        $0.layer.cornerRadius = $0.frame.size.width/2 
-        $0.image = UIImage(named: "Test Image")
+    private let nameLbl = UILabel().then{
+        $0.text = "name"
+        $0.font = UIFont(name: "BMJUA", size: 30)
     }
-    private let nickNameLbl = UILabel().then{
-        $0.text = "nickname"
-    }
+    private let tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(logoView)
-        view.addSubview(profileImage)
-        view.addSubview(nickNameLbl)
+        view.addSubview(nameLbl)
+        view.addSubview(tableView)
         
         constantraint()
+    }
+    
+    private func setUI() {
+        tableView.register(MainCell.self, forCellReuseIdentifier: "mainCell")
+        tableView.rowHeight = 220
+        
+        tableView.delegate = self
+        tableView.dataSource = nil
     }
     
     private func constantraint() {
@@ -41,19 +46,19 @@ class MypageViewController: UIViewController {
             make.centerX.equalTo(view)
             make.top.equalTo(view.frame.height/15)
             make.width.equalTo(170)
-            make.height.equalTo(70)
+            make.height.equalTo(50)
         }
-        profileImage.snp.makeConstraints{ (make) in
-            make.centerX.equalTo(view)
-            make.top.equalTo(logoView.snp.bottom).offset(20)
-            make.leading.equalTo(30)
-//            make.trailing.equalTo(nickNameLbl.snp.leading).offset(10)
-            make.width.height.equalTo(150)
-        }
-        nickNameLbl.snp.makeConstraints{ (make) in
+        nameLbl.snp.makeConstraints{ (make) in
             make.centerX.equalTo(view)
             make.top.equalTo(logoView.snp.bottom).offset(25)
-            make.leading.equalTo(profileImage.snp.trailing).offset(15)
+        }
+        tableView.snp.makeConstraints{ (make) in
+            make.centerX.equalTo(view)
+            make.top.equalTo(nameLbl.snp.bottom).offset(30)
         }
     }
+}
+
+extension MypageViewController: UITableViewDelegate{
+    
 }
