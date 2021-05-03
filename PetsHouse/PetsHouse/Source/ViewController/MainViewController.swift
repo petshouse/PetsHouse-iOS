@@ -11,7 +11,6 @@ import RxSwift
 import RxCocoa
 import SnapKit
 import Then
-import DropDown
 
 class MainViewController: UIViewController {
     
@@ -71,7 +70,6 @@ class MainViewController: UIViewController {
             cell.sirenBtn.rx.tap.subscribe(onNext: { _ in
                 self.selectIndexPath.accept(row)
             }).disposed(by: self.disposeBag)
-            
         }.disposed(by: disposeBag)
     }
     
@@ -86,6 +84,9 @@ class MainViewController: UIViewController {
 
         tableView.register(MainCell.self, forCellReuseIdentifier: "mainCell")
         tableView.rowHeight = 220
+        
+        tableView.delegate = self
+        tableView.dataSource = nil
     }
     
 }
