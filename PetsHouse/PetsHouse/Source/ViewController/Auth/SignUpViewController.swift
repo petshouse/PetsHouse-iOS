@@ -21,8 +21,8 @@ class SignUpViewController: UIViewController {
     private let logoView = UIImageView().then {
         $0.image = UIImage(named: "Logo with text")
     }
-    private let nicknameLbl = UILabel().then {
-        $0.text = "닉네임"
+    private let nameLbl = UILabel().then {
+        $0.text = "이름"
         $0.textColor = .black
         $0.font = UIFont(name: "BMJUA", size: 15)
     }
@@ -36,8 +36,8 @@ class SignUpViewController: UIViewController {
         $0.textColor = .black
         $0.font = UIFont(name: "BMJUA", size: 15)
     }
-    private let nicknameTxtField = UITextField().then {
-        $0.placeholder = "nickname"
+    private let nameTxtField = UITextField().then {
+        $0.placeholder = "name"
         $0.font = UIFont(name: "BMJUA", size: 25)
         $0.layer.cornerRadius = 25
         $0.layer.borderColor = .init(red: 051, green: 051, blue: 051, alpha: 1)
@@ -85,8 +85,8 @@ class SignUpViewController: UIViewController {
         passwordTxtField.isSecureTextEntry = true
 
         view.addSubview(logoView)
-        view.addSubview(nicknameLbl)
-        view.addSubview(nicknameTxtField)
+        view.addSubview(nameLbl)
+        view.addSubview(nameTxtField)
         view.addSubview(emailLbl)
         view.addSubview(emailTxtField)
         view.addSubview(passwordLbl)
@@ -99,7 +99,7 @@ class SignUpViewController: UIViewController {
     }
     
     func bindViewModel() {
-        let input = SignUpViewModel.Input(nickname: nicknameTxtField.rx.text.orEmpty.asDriver(),
+        let input = SignUpViewModel.Input(nickname: nameTxtField.rx.text.orEmpty.asDriver(),
                                           email: emailTxtField.rx.text.orEmpty.asDriver(),
                                           password: passwordTxtField.rx.text.orEmpty.asDriver(),
                                           doneTap: signUpBtn.rx.tap.asDriver())
@@ -125,20 +125,20 @@ class SignUpViewController: UIViewController {
             make.top.equalTo(view.frame.height/5)
             make.width.height.equalTo(220)
         }
-        nicknameLbl.snp.makeConstraints { (make) in
+        nameLbl.snp.makeConstraints { (make) in
             make.top.equalTo(logoView.snp.bottom).offset(30)
             make.centerX.equalTo(view)
             make.leading.equalTo(30)
             make.trailing.equalTo(-50)
         }
-        nicknameTxtField.snp.makeConstraints { (make) in
-            make.top.equalTo(nicknameLbl.snp.bottom).offset(20)
+        nameTxtField.snp.makeConstraints { (make) in
+            make.top.equalTo(nameLbl.snp.bottom).offset(20)
             make.centerX.equalTo(view)
             make.leading.equalTo(30)
             make.trailing.equalTo(-30)
         }
         emailLbl.snp.makeConstraints { (make) in
-            make.top.equalTo(nicknameTxtField.snp.bottom).offset(40)
+            make.top.equalTo(nameTxtField.snp.bottom).offset(40)
             make.centerX.equalTo(view)
             make.leading.equalTo(30)
             make.trailing.equalTo(-50)
