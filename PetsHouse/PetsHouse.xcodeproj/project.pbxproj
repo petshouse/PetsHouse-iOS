@@ -18,6 +18,7 @@
 		9F8311E6263117AB005B484E /* SendEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8311E5263117AB005B484E /* SendEmailViewModel.swift */; };
 		9F8311E926311802005B484E /* SendEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8311E826311802005B484E /* SendEmailViewController.swift */; };
 		9F8311EC2631189E005B484E /* VerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8311EB2631189E005B484E /* VerificationViewModel.swift */; };
+		9F839B25263F748A0062089C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F839B24263F748A0062089C /* FirstViewController.swift */; };
 		9F8403342611C10200F6973B /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8403332611C10200F6973B /* WriteViewController.swift */; };
 		9F8403CE2614195700F6973B /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8403CD2614195600F6973B /* TokenModel.swift */; };
 		9F84047D261567DF00F6973B /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F84047C261567DF00F6973B /* Networking.swift */; };
@@ -53,6 +54,7 @@
 		9F8311E5263117AB005B484E /* SendEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEmailViewModel.swift; sourceTree = "<group>"; };
 		9F8311E826311802005B484E /* SendEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEmailViewController.swift; sourceTree = "<group>"; };
 		9F8311EB2631189E005B484E /* VerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewModel.swift; sourceTree = "<group>"; };
+		9F839B24263F748A0062089C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		9F8403332611C10200F6973B /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		9F8403CD2614195600F6973B /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
 		9F84047C261567DF00F6973B /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				9F8C16E6260B02C300F8D17B /* SignInViewController.swift */,
 				9F879CED261AB0E4006FD55E /* VerificationViewController.swift */,
 				9F8311E826311802005B484E /* SendEmailViewController.swift */,
+				9F839B24263F748A0062089C /* FirstViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				9F879CB526172E37006FD55E /* TokenManager.swift in Sources */,
 				9F7DCAC125F995CA00450A79 /* SceneDelegate.swift in Sources */,
 				9F6362B2263924E70025FCCF /* MypageViewController.swift in Sources */,
+				9F839B25263F748A0062089C /* FirstViewController.swift in Sources */,
 				9F879CC9261AA693006FD55E /* MainModel.swift in Sources */,
 				9F8403342611C10200F6973B /* WriteViewController.swift in Sources */,
 				9F879CB826173116006FD55E /* StoregaeManager.swift in Sources */,
