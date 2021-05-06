@@ -14,8 +14,8 @@ extension UIViewController {
         navigationController?.pushViewController(vc!, animated: true)
     }
     
-    func alert(_ title: String) {
-        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+    func alert(_ title: String, _ message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "확인", style: .default, handler: nil)
         
         alert.addAction(action)
