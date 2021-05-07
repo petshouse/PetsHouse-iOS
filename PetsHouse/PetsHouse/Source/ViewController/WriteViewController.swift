@@ -83,6 +83,10 @@ class WriteViewController: UIViewController {
             self.present(imagePicker, animated: true, completion: nil)
         }).disposed(by: disposeBag)
         
+        postBtn.rx.tap.subscribe(onNext: { _ in
+            self.alert("성공", "등록되었습니다❗️")
+        }).disposed(by: disposeBag)
+        
         self.navigationController?.navigationBar.tintColor = .mainColor
     }
 
