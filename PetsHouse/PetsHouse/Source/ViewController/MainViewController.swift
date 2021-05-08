@@ -74,6 +74,14 @@ class MainViewController: UIViewController {
     }
     
     func setUI() {
+        self.navigationController?.navigationBar.barTintColor = .white
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 20))
+        imageView.contentMode = .scaleAspectFit
+        let image = UIImage(named: "Text Logo")
+        imageView.image = image
+        navigationItem.titleView = imageView
+        
+
         let cell = MainCell()
         cell.moreBtn.rx.tap.subscribe(onNext: { _ in
             let actionSheet = UIAlertController(title: "부적절한 게시글입니까?", message: "", preferredStyle: .actionSheet)
