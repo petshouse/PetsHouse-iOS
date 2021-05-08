@@ -7,10 +7,15 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 class FirstViewController: UIViewController {
     
+    private let disposeBag = DisposeBag()
+    
     private let logoImage = UIImageView().then {
-        $0.image = UIImage(named: "Logo with Text")
+        $0.image = UIImage(named: "Logo with text")
     }
     private let signInBtn = UIButton().then {
         $0.backgroundColor = .mainColor
@@ -33,25 +38,38 @@ class FirstViewController: UIViewController {
         view.addSubview(logoImage)
         view.addSubview(signInBtn)
         view.addSubview(signUpBtn)
+        
+        constantraint()
+        setUI()
+    }
+    
+    private func setUI() {
+        signInBtn.rx.tap.subscribe(onNext: { _ in
+            self.pushVC("signInVC")
+        }).disposed(by: disposeBag)
+        
+        signUpBtn.rx.tap.subscribe(onNext: { _  in
+            self.pushVC("signUpVC")
+        }).disposed(by: disposeBag)
     }
     
     private func constantraint() {
         logoImage.snp.makeConstraints{ (make) in
             make.centerX.equalTo(view)
-            make.top.equalTo(100)
+            make.top.equalTo(170)
             make.height.equalTo(283)
             make.width.equalTo(266)
         }
         signInBtn.snp.makeConstraints{ (make) in
             make.centerX.equalTo(view)
-            make.top.equalTo(logoImage.snp.bottom).offset(40)
+            make.top.equalTo(logoImage.snp.bottom).offset(80)
             make.leading.equalTo(30)
             make.trailing.equalTo(-30)
             make.height.equalTo(45)
         }
         signUpBtn.snp.makeConstraints{ (make) in
             make.centerX.equalTo(view)
-            make.top.equalTo(signInBtn.snp.bottom).offset(20)
+            make.top.equalTo(signInBtn.snp.bottom).offset(40)
             make.leading.equalTo(30)
             make.trailing.equalTo(-30)
             make.height.equalTo(45)
