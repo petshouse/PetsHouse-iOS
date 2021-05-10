@@ -76,8 +76,8 @@ class Service {
             .catchError{ _ in return .just((nil, .fail))}
     }
     
-    func writePost(_ title: String, _ description: String, _ mediaId: String) -> Observable<(Write?, Network)> {
-        return provider.rx.request(.writePost(title, description, mediaId))
+    func writePost(_ title: String, _ description: String, _ mediaId: String, _ area: String) -> Observable<(Write?, Network)> {
+        return provider.rx.request(.writePost(title, description, mediaId, area))
             .filterSuccessfulStatusCodes()
             .asObservable()
             .map(Write.self)
