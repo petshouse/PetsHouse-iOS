@@ -23,7 +23,7 @@ class WriteViewController: UIViewController {
 
  
     @IBOutlet weak var titleTxtField: UITextField!
-    @IBOutlet weak var areaPicker: UIPickerView!
+    @IBOutlet weak var areaTxtField: UITextField!
     @IBOutlet weak var writeTxtView: KMPlaceholderTextView!
     @IBOutlet weak var libraryImage: UIImageView!
     @IBOutlet weak var photoBtn: UIButton!
@@ -41,24 +41,13 @@ class WriteViewController: UIViewController {
 
         bindViewModel()
         setUI()
-        picker()
     }
-    
-    private func picker() {
-        Observable.just(["서울", "대전", "광주", "대구", "부산", "울산", "제주", "강원", "경기", "전남","전북", "경남","경북","충남","충북"])
-            .bind(to: areaPicker.rx.itemTitles) { _, item in
-                return "\(item)"
-            }.disposed(by: disposeBag)
-        areaPicker.rx.itemSelected.subscribe(onNext: { (row, value) in
-            NSLog("selected: \(row)")
-            }).disposed(by: disposeBag)
-        
-    }
-    
+
     func bindViewModel() {
         let input = WriteViewModel.Input(titleText: titleTxtField.rx.text.orEmpty.asDriver(),
                                          postText: writeTxtView.rx.text.orEmpty.asDriver(),
                                          selectImage: editImageData.asDriver(onErrorJustReturn: nil),
+                                         area: areaTxtField.rx.text.orEmpty.asDriver(),
                                          doneTap: postBtn.rx.tap.asDriver())
         let output = viewModel.transform(input: input)
         
