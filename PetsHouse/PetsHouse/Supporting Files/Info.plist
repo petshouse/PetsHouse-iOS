@@ -4,8 +4,8 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>BMJUA_otf</string>
-		<string>BMJUA_ttf</string>
+		<string>BMJUA_otf.otf</string>
+		<string>BMJUA_ttf.ttf</string>
 	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>저희 앱은 카메라를 사용합니다</string>

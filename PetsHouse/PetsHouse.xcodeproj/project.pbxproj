@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4C2FC0B10D8D4613DC5A6BFC /* Pods_PetsHouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB15DB45C3F4D9DBD1961558 /* Pods_PetsHouse.framework */; };
 		9F6362B2263924E70025FCCF /* MypageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6362B1263924E70025FCCF /* MypageViewController.swift */; };
+		9F6BABA12648BC9F00728C05 /* BMJUA_otf.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9F6BABA02648BC9F00728C05 /* BMJUA_otf.otf */; };
+		9F6BABA32648BCF800728C05 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BABA22648BCF800728C05 /* UITextField.swift */; };
+		9F6BABA52648BFBE00728C05 /* BMJUA_ttf.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F6BABA42648BFBE00728C05 /* BMJUA_ttf.ttf */; };
 		9F6BEBCE262AC025000BC386 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6BEBCD262AC025000BC386 /* MainCell.swift */; };
 		9F7DCABF25F995CA00450A79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7DCABE25F995CA00450A79 /* AppDelegate.swift */; };
 		9F7DCAC125F995CA00450A79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7DCAC025F995CA00450A79 /* SceneDelegate.swift */; };
@@ -43,6 +46,9 @@
 
 /* Begin PBXFileReference section */
 		9F6362B1263924E70025FCCF /* MypageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageViewController.swift; sourceTree = "<group>"; };
+		9F6BABA02648BC9F00728C05 /* BMJUA_otf.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMJUA_otf.otf; sourceTree = "<group>"; };
+		9F6BABA22648BCF800728C05 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		9F6BABA42648BFBE00728C05 /* BMJUA_ttf.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMJUA_ttf.ttf; sourceTree = "<group>"; };
 		9F6BEBCD262AC025000BC386 /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
 		9F7DCABB25F995CA00450A79 /* PetsHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetsHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F7DCABE25F995CA00450A79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,7 +80,6 @@
 		9F8C16E6260B02C300F8D17B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9FE4A0C82608DEA400D668F0 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		9FE4A0DF2609CD6500D668F0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		9FE4A0E32609FDC500D668F0 /* BMJUA_otf.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMJUA_otf.otf; sourceTree = "<group>"; };
 		9FE4A0E7260A014F00D668F0 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		BB15DB45C3F4D9DBD1961558 /* Pods_PetsHouse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetsHouse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF9A0E6EC9526486968A50E3 /* Pods-PetsHouse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetsHouse.release.xcconfig"; path = "Target Support Files/Pods-PetsHouse/Pods-PetsHouse.release.xcconfig"; sourceTree = "<group>"; };
@@ -265,7 +270,8 @@
 		9FE4A0E22609FDAF00D668F0 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				9FE4A0E32609FDC500D668F0 /* BMJUA_otf.otf */,
+				9F6BABA42648BFBE00728C05 /* BMJUA_ttf.ttf */,
+				9F6BABA02648BC9F00728C05 /* BMJUA_otf.otf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -275,6 +281,7 @@
 			children = (
 				9FE4A0E7260A014F00D668F0 /* UIColor.swift */,
 				9F879CBA2619A24A006FD55E /* UIViewController.swift */,
+				9F6BABA22648BCF800728C05 /* UITextField.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -350,6 +357,8 @@
 				9F7DCACB25F995CE00450A79 /* LaunchScreen.storyboard in Resources */,
 				9F7DCAC825F995CE00450A79 /* Assets.xcassets in Resources */,
 				9F7DCAC625F995CA00450A79 /* Main.storyboard in Resources */,
+				9F6BABA12648BC9F00728C05 /* BMJUA_otf.otf in Resources */,
+				9F6BABA52648BFBE00728C05 /* BMJUA_ttf.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +418,7 @@
 				9F6BEBCE262AC025000BC386 /* MainCell.swift in Sources */,
 				9F8403CE2614195700F6973B /* TokenModel.swift in Sources */,
 				9F88CEF32623DE5A0081BB5C /* WriteModel.swift in Sources */,
+				9F6BABA32648BCF800728C05 /* UITextField.swift in Sources */,
 				9F88CEDC261FF9CE0081BB5C /* SignInViewModel.swift in Sources */,
 				9FE4A0E02609CD6500D668F0 /* SignUpViewController.swift in Sources */,
 				9FE4A0E8260A014F00D668F0 /* UIColor.swift in Sources */,
