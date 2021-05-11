@@ -38,42 +38,37 @@ class SignUpViewController: UIViewController {
     }
     private let nameTxtField = UITextField().then {
         $0.placeholder = "name"
-        $0.font = UIFont(name: "BMJUA", size: 25)
-        $0.layer.cornerRadius = 25
-        $0.layer.borderColor = .init(red: 051, green: 051, blue: 051, alpha: 1)
-        $0.backgroundColor = .white
+        $0.font = UIFont(name: "BMJUA", size: 15)
     }
     private  let emailTxtField = UITextField().then {
         $0.placeholder = "email"
         $0.font = UIFont(name: "BMJUA", size: 25)
-        $0.layer.cornerRadius = 25
-        $0.layer.borderColor = .init(red: 051, green: 051, blue: 051, alpha: 1)
-        $0.backgroundColor = .white
+    }
+    private let duplicateLbl = UILabel().then {
+        $0.text = "중복된 이메일입니다!"
+        $0.font = UIFont(name: "BMJUA", size: 10)
+        $0.textColor = .red
     }
     private let checkBtn = UIButton().then {
         $0.clipsToBounds = true
         $0.backgroundColor = .white
         $0.setTitle("중복체크", for: .normal)
         $0.setTitleColor(.mainColor, for: .normal)
-        $0.layer.borderColor = .init(red: 255, green: 204, blue: 153, alpha: 1)
+        $0.layer.borderColor = UIColor.mainColor.cgColor
         $0.layer.cornerRadius = 25
     }
     private let passwordTxtField = UITextField().then {
         $0.placeholder = "password"
-        $0.font = UIFont(name: "BMJUA", size: 25)
-        $0.layer.cornerRadius = 25
-        $0.layer.borderColor = .init(red: 051, green: 051, blue: 051, alpha: 1)
-        $0.backgroundColor = .white
+        $0.font = UIFont(name: "BMJUA", size: 15)
+        $0.textColor = .black
     }
     private let signUpBtn = UIButton().then {
-        $0.clipsToBounds = true
         $0.backgroundColor = .mainColor
         $0.setTitle("회원가입", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.layer.cornerRadius = 15
     }
     private let signInBtn = UIButton().then {
-        $0.clipsToBounds = true
         $0.setTitle("이미 계정이 있으신가요? 로그인 하기", for: .normal)
         $0.setTitleColor(.black, for: .normal)
     }
@@ -81,14 +76,17 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        passwordTxtField.isSecureTextEntry = true
 
+
+        passwordTxtField.isSecureTextEntry = true
+        
         view.addSubview(logoView)
         view.addSubview(nameLbl)
         view.addSubview(nameTxtField)
         view.addSubview(emailLbl)
         view.addSubview(emailTxtField)
+        view.addSubview(checkBtn)
+        view.addSubview(duplicateLbl)
         view.addSubview(passwordLbl)
         view.addSubview(passwordTxtField)
         view.addSubview(signInBtn)
@@ -96,6 +94,7 @@ class SignUpViewController: UIViewController {
         
         constantraint()
         bindViewModel()
+        setUI()
     }
     
     func bindViewModel() {
@@ -112,10 +111,9 @@ class SignUpViewController: UIViewController {
     }
     
     func setUI() {
-        signUpBtn.rx.tap.subscribe(onNext: { _ in
-            self.pushVC("verificationVC")
-        }).disposed(by: disposeBag)
-        
+        nameTxtField.underLine()
+        emailTxtField.underLine()
+        passwordTxtField.underLine()
     }
     
     //Constantraint
@@ -147,7 +145,16 @@ class SignUpViewController: UIViewController {
             make.top.equalTo(emailLbl.snp.bottom).offset(20)
             make.centerX.equalTo(view)
             make.leading.equalTo(30)
+            make.trailing.equalTo(-70)
+        }
+        checkBtn.snp.makeConstraints{ (make) in
+            make.leading.equalTo(emailTxtField.snp.trailing).offset(20)
             make.trailing.equalTo(-30)
+        }
+        duplicateLbl.snp.makeConstraints { (make) in
+            make.top.equalTo(emailTxtField.snp.bottom)
+            make.leading.equalTo(30)
+            make.trailing.equalTo(-50)
         }
         passwordLbl.snp.makeConstraints{ (make) in
             make.top.equalTo(emailTxtField.snp.bottom).offset(40)
