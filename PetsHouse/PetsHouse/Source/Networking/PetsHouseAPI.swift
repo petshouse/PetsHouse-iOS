@@ -22,7 +22,7 @@ enum PetsHouseAPI {
 extension PetsHouseAPI: TargetType {
 
     var baseURL: URL {
-        return URL(string: "http://13.59.92.217")!
+        return URL(string: "http://13.59.92.217:5000")!
     }
 
     var path: String {
@@ -30,7 +30,7 @@ extension PetsHouseAPI: TargetType {
         case .signIn:
             return "/api/v1/login"
         case .signUp:
-            return "/api/v1/auth "
+            return "/api/v1/auth"
         case .emailSend:
             return "/api/v1/emailsend"
         case .verification:
