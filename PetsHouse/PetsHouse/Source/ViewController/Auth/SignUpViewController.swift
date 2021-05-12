@@ -42,18 +42,12 @@ class SignUpViewController: UIViewController {
     }
     private  let emailTxtField = UITextField().then {
         $0.placeholder = "email"
-        $0.font = UIFont(name: "BMJUA", size: 25)
-    }
-    private let duplicateLbl = UILabel().then {
-        $0.text = "중복된 이메일입니다!"
-        $0.font = UIFont(name: "BMJUA", size: 10)
-        $0.textColor = .red
+        $0.font = UIFont(name: "BMJUA", size: 15)
     }
     private let checkBtn = UIButton().then {
-        $0.clipsToBounds = true
-        $0.backgroundColor = .white
         $0.setTitle("중복체크", for: .normal)
         $0.setTitleColor(.mainColor, for: .normal)
+        $0.titleLabel?.font = UIFont(name: "BMJUA", size: 15)
         $0.layer.borderColor = UIColor.mainColor.cgColor
         $0.layer.cornerRadius = 25
     }
@@ -71,6 +65,7 @@ class SignUpViewController: UIViewController {
     private let signInBtn = UIButton().then {
         $0.setTitle("이미 계정이 있으신가요? 로그인 하기", for: .normal)
         $0.setTitleColor(.black, for: .normal)
+        $0.titleLabel?.font = UIFont(name: "BMJUA", size: 10)
     }
     
     override func viewDidLoad() {
@@ -86,7 +81,6 @@ class SignUpViewController: UIViewController {
         view.addSubview(emailLbl)
         view.addSubview(emailTxtField)
         view.addSubview(checkBtn)
-        view.addSubview(duplicateLbl)
         view.addSubview(passwordLbl)
         view.addSubview(passwordTxtField)
         view.addSubview(signInBtn)
@@ -105,12 +99,26 @@ class SignUpViewController: UIViewController {
         let output = viewModel.transform(input: input)
         
         output.isEnable.drive(signUpBtn.rx.isEnabled).disposed(by: disposeBag)
-        output.result.emit(onNext: { _ in
+        
+        checkBtn.rx.tap.asObservable().subscribe(onNext: { [unowned self] in
+            output.duplicateCheck.emit(onNext: { [unowned self] error in
+                self.alert("실페", error)
+            }, onCompleted: { [unowned self] in
+                self.alert("성공", "사용 가능한 이메일")
+            }).disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
+        
+        output.result.emit(onCompleted: {
+            self.alert("성공", "회원가입에 성공하셨습니다")
             self.pushVC("sendEmailVC")
         }).disposed(by: disposeBag)
     }
     
     func setUI() {
+        signInBtn.rx.tap.subscribe(onNext: { _ in
+            self.pushVC("signInVC")
+        }).disposed(by: disposeBag)
+        
         nameTxtField.underLine()
         emailTxtField.underLine()
         passwordTxtField.underLine()
@@ -145,16 +153,12 @@ class SignUpViewController: UIViewController {
             make.top.equalTo(emailLbl.snp.bottom).offset(20)
             make.centerX.equalTo(view)
             make.leading.equalTo(30)
-            make.trailing.equalTo(-70)
+            make.trailing.equalTo(-100)
         }
         checkBtn.snp.makeConstraints{ (make) in
+            make.top.equalTo(nameTxtField.snp.bottom).offset(70)
             make.leading.equalTo(emailTxtField.snp.trailing).offset(20)
             make.trailing.equalTo(-30)
-        }
-        duplicateLbl.snp.makeConstraints { (make) in
-            make.top.equalTo(emailTxtField.snp.bottom)
-            make.leading.equalTo(30)
-            make.trailing.equalTo(-50)
         }
         passwordLbl.snp.makeConstraints{ (make) in
             make.top.equalTo(emailTxtField.snp.bottom).offset(40)
