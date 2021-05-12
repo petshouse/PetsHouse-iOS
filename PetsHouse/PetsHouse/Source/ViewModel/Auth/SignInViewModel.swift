@@ -41,7 +41,7 @@ class SignInViewModel: ViewModelType {
                 case .preconditionFailed:
                     result.onNext("preconditionFailed")
                 default:
-                    print("default")
+                    print("sign In default")
                 }
             }).disposed(by: self.disposeBag)
         }).disposed(by: disposeBag)
