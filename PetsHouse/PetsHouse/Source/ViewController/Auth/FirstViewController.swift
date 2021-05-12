@@ -44,6 +44,8 @@ class FirstViewController: UIViewController {
     }
     
     private func setUI() {
+        navigationController?.isNavigationBarHidden = true
+
         signInBtn.rx.tap.subscribe(onNext: { _ in
             self.pushVC("signInVC")
         }).disposed(by: disposeBag)
@@ -56,22 +58,22 @@ class FirstViewController: UIViewController {
     private func constantraint() {
         logoImage.snp.makeConstraints{ (make) in
             make.centerX.equalTo(view)
-            make.top.equalTo(170)
+            make.top.equalTo(180)
             make.height.equalTo(283)
             make.width.equalTo(266)
         }
         signInBtn.snp.makeConstraints{ (make) in
             make.centerX.equalTo(view)
-            make.top.equalTo(logoImage.snp.bottom).offset(80)
-            make.leading.equalTo(30)
-            make.trailing.equalTo(-30)
+            make.top.equalTo(logoImage.snp.bottom).offset(100)
+            make.leading.equalTo(50)
+            make.trailing.equalTo(-50)
             make.height.equalTo(45)
         }
         signUpBtn.snp.makeConstraints{ (make) in
             make.centerX.equalTo(view)
             make.top.equalTo(signInBtn.snp.bottom).offset(40)
-            make.leading.equalTo(30)
-            make.trailing.equalTo(-30)
+            make.leading.equalTo(50)
+            make.trailing.equalTo(-50)
             make.height.equalTo(45)
         }
     }
