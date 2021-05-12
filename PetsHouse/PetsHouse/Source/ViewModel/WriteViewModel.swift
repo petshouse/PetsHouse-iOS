@@ -18,6 +18,8 @@ class WriteViewModel: ViewModelType {
         let titleText: Driver<String>
         let postText: Driver<String>
         let selectImage: Driver<Data?>
+        let area: Driver<String>
+       // let media: Driver<String>
         let doneTap: Driver<Void>
     }
     
@@ -28,13 +30,13 @@ class WriteViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         let api = Service()
-        let info = Driver.combineLatest(input.titleText, input.selectImage, input.postText, input.doneTap)
+        let info = Driver.combineLatest(input.titleText, input.postText/*input.media,*/, input.area )
         let isEnable = info.map { !$0.0.isEmpty }
         let result = PublishSubject<String>()
         
-        input.doneTap.asObservable().withLatestFrom(info).subscribe(onNext: { [weak self] title, media, content, _ in
+        input.selectImage.asObservable().subscribe(onNext: { [weak self] media in
             guard let self = self else { return }
-            api.uploadImage(media).subscribe(onNext: { _ ,response in
+            api.uploadImage(media).subscribe(onNext: { _, response in
                 switch response {
                 case .ok:
                     result.onCompleted()
@@ -47,7 +49,23 @@ class WriteViewModel: ViewModelType {
                 }
             }).disposed(by: self.disposeBag)
         }).disposed(by: disposeBag)
-        
+
+        input.doneTap.asObservable().withLatestFrom(info).subscribe(onNext: { [weak self] title, description, area in
+            guard let self = self else { return }
+            api.writePost(title, description, "", area).subscribe(onNext: { _, response in
+                switch response {
+                case .ok:
+                    result.onCompleted()
+                case .forbidden:
+                    result.onNext("실패")
+                case .preconditionFailed:
+                    result.onNext("preconditionFailed")
+                default:
+                    result.onNext("default")
+                }
+            }).disposed(by: self.disposeBag)
+        }).disposed(by: disposeBag)
+
         return Output(result: result.asSignal(onErrorJustReturn: "실패"), isEnable: isEnable.asDriver())
     }
 }
