@@ -21,6 +21,7 @@ class SignUpViewModel: ViewModelType {
         let doneTap: Driver<Void>
     }
     struct Output {
+        let duplicateCheck: Signal<String>
         let result: Signal<String>
         let isEnable: Driver<Bool>
     }
@@ -28,6 +29,7 @@ class SignUpViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         let api = Service()
         let result = PublishSubject<String>()
+        let duplicate = PublishSubject<String>()
         let info = Driver.combineLatest(input.nickname, input.email, input.password)
         let isEnable = info.map { !$0.0.isEmpty && !$0.1.isEmpty && !$0.2.isEmpty }
         
@@ -47,6 +49,6 @@ class SignUpViewModel: ViewModelType {
             }).disposed(by: self.disposeBag)
         }).disposed(by: disposeBag)
 
-        return Output(result: result.asSignal(onErrorJustReturn: "회원가입 실패"), isEnable: isEnable.asDriver())
+        return Output(duplicateCheck: duplicate.asSignal(onErrorJustReturn: ""), result: result.asSignal(onErrorJustReturn: "회원가입 실패"), isEnable: isEnable.asDriver())
     }
 }
