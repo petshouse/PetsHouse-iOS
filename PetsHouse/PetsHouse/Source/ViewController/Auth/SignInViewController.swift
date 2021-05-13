@@ -78,17 +78,13 @@ class SignInViewController: UIViewController {
         
         output.isEnable.drive(signInBtn.rx.isEnabled).disposed(by: disposeBag)
         output.result.emit(onCompleted: { [unowned self] in
-            self.pushVC("mainVC")
+            self.pushVC("MainVC")
         }).disposed(by: disposeBag)
     }
     
     func setUI() {
         
         navigationController?.isNavigationBarHidden = true
-
-        signInBtn.rx.tap.subscribe(onNext: { _ in
-            self.pushVC("mainVC")
-        }).disposed(by: disposeBag)
         
         signUpBtn.rx.tap.subscribe(onNext: { _ in
             self.pushVC("signUpVC")
@@ -106,7 +102,7 @@ class SignInViewController: UIViewController {
             make.centerX.equalTo(view)
             make.top.equalTo(view.frame.height/5)
             make.width.height.equalTo(220)
-        }
+        } 
         emailLbl.snp.makeConstraints { (make) in
             make.top.equalTo(logoView.snp.bottom).offset(80)
             make.centerX.equalTo(view)
