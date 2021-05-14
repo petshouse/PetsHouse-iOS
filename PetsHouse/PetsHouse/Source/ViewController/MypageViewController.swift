@@ -18,17 +18,16 @@ class MypageViewController: UIViewController {
         $0.image = UIImage(named: "Text Logo")
     }
     private let nameLbl = UILabel().then{
-        $0.text = "name"
-        $0.font = UIFont(name: "BMJUA", size: 30)
+        $0.text = "닉네임"
+        $0.font = UIFont(name: "BMJUA_otf", size: 30)
     }
-    private let tableView = UITableView()
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(logoView)
         view.addSubview(nameLbl)
-        view.addSubview(tableView)
         
         constantraint()
     }
@@ -51,10 +50,6 @@ class MypageViewController: UIViewController {
         nameLbl.snp.makeConstraints{ (make) in
             make.centerX.equalTo(view)
             make.top.equalTo(logoView.snp.bottom).offset(25)
-        }
-        tableView.snp.makeConstraints{ (make) in
-            make.centerX.equalTo(view)
-            make.top.equalTo(nameLbl.snp.bottom).offset(30)
         }
     }
 }
