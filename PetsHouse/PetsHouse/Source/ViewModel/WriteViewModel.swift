@@ -61,7 +61,7 @@ class WriteViewModel: ViewModelType {
                 case .preconditionFailed:
                     result.onNext("preconditionFailed")
                 default:
-                    result.onNext("default")
+                    result.onNext("write default")
                 }
             }).disposed(by: self.disposeBag)
         }).disposed(by: disposeBag)

@@ -40,7 +40,7 @@ class VertificationViewModel: ViewModelType {
                 case .preconditionFailed:
                     result.onNext("preconditionFailed")
                 default:
-                    result.onNext("default")
+                    result.onNext("Vertification default")
                 }
             }).disposed(by: self!.disposeBag)
         }).disposed(by: disposeBag)

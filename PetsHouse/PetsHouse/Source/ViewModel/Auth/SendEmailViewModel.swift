@@ -39,7 +39,7 @@ class SendEmailViewModel: ViewModelType {
                 case .preconditionFailed:
                     result.onNext("preconditionFailed")
                 default:
-                    print("vertification default")
+                    result.onNext("sendEmail default")
                 }
             }).disposed(by: self!.disposeBag)
         }).disposed(by: disposeBag)
