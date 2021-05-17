@@ -43,6 +43,8 @@ class SignUpViewController: UIViewController {
     private  let emailTxtField = UITextField().then {
         $0.placeholder = "email"
         $0.font = UIFont(name: "BMJUA", size: 15)
+        $0.autocapitalizationType = .none
+        $0.keyboardType = .emailAddress
     }
     private let checkBtn = UIButton().then {
         $0.setTitle("중복체크", for: .normal)
@@ -55,6 +57,7 @@ class SignUpViewController: UIViewController {
         $0.placeholder = "password"
         $0.font = UIFont(name: "BMJUA", size: 15)
         $0.textColor = .black
+        $0.autocapitalizationType = .none
     }
     private let signUpBtn = UIButton().then {
         $0.backgroundColor = .mainColor
@@ -122,6 +125,10 @@ class SignUpViewController: UIViewController {
         nameTxtField.underLine()
         emailTxtField.underLine()
         passwordTxtField.underLine()
+        
+//        checkBtn.rx.tap.subscribe(onNext: {
+//            self.alert("성공", "사용가능한 이메일입니다")
+//        }).disposed(by: disposeBag)
     }
     
     //Constantraint

@@ -34,10 +34,13 @@ class SignInViewController: UIViewController {
     private let emailTxtField = UITextField().then {
         $0.placeholder = "email"
         $0.font = UIFont(name: "BMJUA", size: 15)
+        $0.autocapitalizationType = .none
+        $0.keyboardType = .emailAddress
     }
     private let passwordTxtField = UITextField().then {
         $0.placeholder = "password"
         $0.font = UIFont(name: "BMJUA", size: 15)
+        $0.autocapitalizationType = .none
     }
     private let signInBtn = UIButton().then {
         $0.backgroundColor = .mainColor
@@ -78,13 +81,13 @@ class SignInViewController: UIViewController {
         
         output.isEnable.drive(signInBtn.rx.isEnabled).disposed(by: disposeBag)
         output.result.emit(onCompleted: { [unowned self] in
-            self.pushVC("MainVC")
+            self.pushVC("mainVC")
         }).disposed(by: disposeBag)
     }
     
     func setUI() {
         
-        navigationController?.isNavigationBarHidden = true
+//        navigationController?.isNavigationBarHidden = true
         
         signUpBtn.rx.tap.subscribe(onNext: { _ in
             self.pushVC("signUpVC")
@@ -102,7 +105,7 @@ class SignInViewController: UIViewController {
             make.centerX.equalTo(view)
             make.top.equalTo(view.frame.height/5)
             make.width.height.equalTo(220)
-        } 
+        }
         emailLbl.snp.makeConstraints { (make) in
             make.top.equalTo(logoView.snp.bottom).offset(80)
             make.centerX.equalTo(view)
