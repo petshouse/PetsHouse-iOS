@@ -26,8 +26,10 @@ class Service {
         return provider.rx.request(.signIn(email, password))
             .filterSuccessfulStatusCodes()
             .asObservable()
-            .map { _ -> Network in
-                return (.success)
+            .map(TokenModel.self)
+            .map{token -> (Network) in
+                if StoregaeManager.shared.create(token) {return (.success)}
+                return .fail
             }.catchError{ [unowned self] in return .just(self.setNetworkError($0))}
     }
     
