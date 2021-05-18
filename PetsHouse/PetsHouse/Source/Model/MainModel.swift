@@ -10,11 +10,14 @@ import Foundation
 class MainModel: Codable {
     let num: Int
     let user: Int
-    let nickname: String
     let title: String
     let description: String
-    let media: String
+    let mediaName: String
     let date: String
     let totalJoin: Int
     let area: String
+}
+
+class loadImageModel: Codable {
+    let mediaName: String
 }
