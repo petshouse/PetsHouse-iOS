@@ -11,6 +11,7 @@ import Moya
 enum PetsHouseAPI {
     case signIn(_ email: String, _ password: String)
     case signUp(_ nickname: String, _ email: String, _ password: String)
+    case checkEmail(_ email: String)
     case emailSend(_ email: String)
     case verification(_ code: String, _ email: String)
     case uploadImage(_ image: Data?)
@@ -31,6 +32,8 @@ extension PetsHouseAPI: TargetType {
             return "/api/v1/login"
         case .signUp:
             return "/api/v1/auth"
+        case .checkEmail:
+            return "/api/v1/Id"
         case .emailSend:
             return "/api/v1/emailsend"
         case .verification:
@@ -48,7 +51,7 @@ extension PetsHouseAPI: TargetType {
 
     var method: Moya.Method {
         switch self {
-        case .signIn,.signUp,.emailSend,.uploadImage, .writePost:
+        case .signIn,.signUp,.checkEmail,.emailSend,.uploadImage, .writePost:
             return .post
         case .loadPost, .loadImage, .verification:
             return .get
@@ -65,6 +68,8 @@ extension PetsHouseAPI: TargetType {
             return .requestParameters(parameters: ["email": email, "password": password], encoding: JSONEncoding.prettyPrinted)
         case .signUp(let nickname, let email, let password):
             return .requestParameters(parameters: ["nickname": nickname,"email": email, "password": password], encoding: JSONEncoding.prettyPrinted)
+        case .checkEmail(let email):
+            return  .requestParameters(parameters: ["email": email], encoding: JSONEncoding.prettyPrinted)
         case .emailSend(let email):
             return .requestParameters(parameters: ["email": email], encoding: JSONEncoding.prettyPrinted)
         case .uploadImage(let image):
@@ -82,7 +87,7 @@ extension PetsHouseAPI: TargetType {
     
     var headers: [String : String]? {
         switch self {
-        case .signIn, .signUp,.emailSend, .verification:
+        case .signIn, .signUp, .checkEmail,.emailSend, .verification:
             return nil
         case .uploadImage, .loadImage, .loadPost, .writePost:
             guard let token = TokenManager.currentToken?.accessToken else { return nil }
