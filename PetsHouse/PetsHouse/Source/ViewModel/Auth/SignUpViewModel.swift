@@ -18,6 +18,7 @@ class SignUpViewModel: ViewModelType {
         let nickname: Driver<String>
         let email: Driver<String>
         let password: Driver<String>
+        let duplicateTap: Driver<Void>
         let doneTap: Driver<Void>
     }
     struct Output {
@@ -48,7 +49,21 @@ class SignUpViewModel: ViewModelType {
                 }
             }).disposed(by: self.disposeBag)
         }).disposed(by: disposeBag)
-
+        
+        input.duplicateTap.asObservable().withLatestFrom(info).subscribe(onNext: { [weak self] _, email, _ in
+            guard let self = self else { return }
+            api.checkEmail(email).subscribe(onNext: { response in
+                switch response {
+                case .success:
+                    result.onCompleted()
+                case .preconditionFailed:
+                    result.onNext("중복된 이메일")
+                default:
+                    result.onNext("error")
+                }
+            }).disposed(by: self.disposeBag)
+        }).disposed(by: disposeBag)
+        
         return Output(duplicateCheck: duplicate.asSignal(onErrorJustReturn: ""), result: result.asSignal(onErrorJustReturn: "회원가입 실패"), isEnable: isEnable.asDriver())
     }
 }
