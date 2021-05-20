@@ -98,17 +98,16 @@ class SignUpViewController: UIViewController {
         let input = SignUpViewModel.Input(nickname: nameTxtField.rx.text.orEmpty.asDriver(),
                                           email: emailTxtField.rx.text.orEmpty.asDriver(),
                                           password: passwordTxtField.rx.text.orEmpty.asDriver(),
+                                          duplicateTap: checkBtn.rx.tap.asDriver(),
                                           doneTap: signUpBtn.rx.tap.asDriver())
         let output = viewModel.transform(input: input)
         
         output.isEnable.drive(signUpBtn.rx.isEnabled).disposed(by: disposeBag)
         
-        checkBtn.rx.tap.asObservable().subscribe(onNext: { [unowned self] in
-            output.duplicateCheck.emit(onNext: { [unowned self] error in
-                self.alert("실페", error)
-            }, onCompleted: { [unowned self] in
-                self.alert("성공", "사용 가능한 이메일")
-            }).disposed(by: disposeBag)
+        output.duplicateCheck.emit(onNext: { [unowned self] error in
+            self.alert("실패", error)
+        }, onCompleted: {[unowned self] in
+            self.alert("성공", "사용가능한 이메일")
         }).disposed(by: disposeBag)
         
         output.result.emit(onCompleted: {
@@ -125,10 +124,6 @@ class SignUpViewController: UIViewController {
         nameTxtField.underLine()
         emailTxtField.underLine()
         passwordTxtField.underLine()
-        
-//        checkBtn.rx.tap.subscribe(onNext: {
-//            self.alert("성공", "사용가능한 이메일입니다")
-//        }).disposed(by: disposeBag)
     }
     
     //Constantraint
