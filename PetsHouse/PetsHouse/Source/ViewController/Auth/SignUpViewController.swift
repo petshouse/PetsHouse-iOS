@@ -111,7 +111,7 @@ class SignUpViewController: UIViewController {
         }).disposed(by: disposeBag)
         
         output.result.emit(onCompleted: {
-            self.alert("성공", "회원가입에 성공하셨습니다")
+            self.alert("성공", "인증코드 받으러 가기")
             self.pushVC("sendEmailVC")
         }).disposed(by: disposeBag)
     }
