@@ -18,6 +18,7 @@ class MainViewController: UIViewController {
     private let viewModel = MainViewModel()
     
     private let loadData = BehaviorRelay<Void>(value: ())
+//    private let loadImage = BehaviorRelay<Data>(value: Data)
     var selectIndexPath = PublishRelay<Int>()
     
     @IBOutlet weak var sequencePicker: UIPickerView!
@@ -62,10 +63,10 @@ class MainViewController: UIViewController {
         let output = viewModel.transform(input: input)
         
         output.loadData.bind(to: tableView.rx.items(cellIdentifier: "mainCell", cellType: MainCell.self)) { row, element, cell in
-            cell.nameLbl.text = element.nickname
+//            cell.nameLbl.text = element.nickname
             cell.titleTxtField.text = element.title
             cell.contentTxtView.text = element.description
-            cell.postImage.image = UIImage(named: element.media)
+            cell.postImage.image = UIImage(named: element.mediaName)
             cell.timeLbl.text = element.date
             cell.sirenBtn.rx.tap.subscribe(onNext: { _ in
                 self.selectIndexPath.accept(row)
@@ -74,12 +75,15 @@ class MainViewController: UIViewController {
     }
     
     func setUI() {
+        navigationController?.isNavigationBarHidden = false
         self.navigationController?.navigationBar.barTintColor = .white
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 20))
         imageView.contentMode = .scaleAspectFit
         let image = UIImage(named: "Text Logo")
         imageView.image = image
         navigationItem.titleView = imageView
+        self.navigationItem.setHidesBackButton(true, animated: true)
+
         
 
         let cell = MainCell()
