@@ -51,10 +51,11 @@ class WriteViewController: UIViewController {
                                          doneTap: postBtn.rx.tap.asDriver())
         let output = viewModel.transform(input: input)
         
-        output.isEnable.drive(postBtn.rx.isEnabled).disposed(by: disposeBag)
         output.result.emit(onCompleted: { [unowned self] in
-            navigationController?.popViewController(animated: true)
+            self.pushVC("mainVC")
         }).disposed(by: disposeBag)
+        output.isEnable.drive(postBtn.rx.isEnabled).disposed(by: disposeBag)
+
     }
     
     func setUI() {
@@ -70,10 +71,6 @@ class WriteViewController: UIViewController {
             imagePicker.delegate = self
             imagePicker.sourceType = .photoLibrary
             self.present(imagePicker, animated: true, completion: nil)
-        }).disposed(by: disposeBag)
-        
-        postBtn.rx.tap.subscribe(onNext: { _ in
-            self.alert("성공", "등록되었습니다❗️")
         }).disposed(by: disposeBag)
         
         self.navigationController?.navigationBar.tintColor = .mainColor
