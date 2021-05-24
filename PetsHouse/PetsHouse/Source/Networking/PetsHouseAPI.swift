@@ -23,7 +23,7 @@ enum PetsHouseAPI {
 extension PetsHouseAPI: TargetType {
 
     var baseURL: URL {
-        return URL(string: "http://13.59.92.217:5000")!
+        return URL(string: "http://3.15.155.179:5000")!
     }
 
     var path: String {
