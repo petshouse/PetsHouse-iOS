@@ -33,7 +33,7 @@ extension PetsHouseAPI: TargetType {
         case .signUp:
             return "/api/v1/auth"
         case .checkEmail:
-            return "/api/v1/Id"
+            return "/api/v1/id"
         case .emailSend:
             return "/api/v1/emailsend"
         case .verification:
