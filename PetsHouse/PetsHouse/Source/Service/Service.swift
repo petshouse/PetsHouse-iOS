@@ -60,13 +60,13 @@ class Service {
             }.catchError { [unowned self] in return .just(self.setNetworkError($0))}
     }
     
-    func uploadImage(_ media: Data?) -> Observable<(Write?,Network)> {
+    func uploadImage(_ media: Data?) -> Observable<(Image?,Network)> {
         return provider.rx.request(.uploadImage(media))
             .filterSuccessfulStatusCodes()
             .asObservable()
-            .map(Write.self)
-            .map { return ($0, .ok) }
-            .catchError { _ in return .just((nil, .fail))}
+            .map(Image.self)
+            .map{ return ($0, .ok)}
+            .catchError{ _ in return .just((nil, .fail))}
     }
     
     func loadImage(_ image: Data) -> Observable<(ImageModel?, Network)> {
