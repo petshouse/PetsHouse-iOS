@@ -69,13 +69,13 @@ class Service {
             .catchError { _ in return .just((nil, .fail))}
     }
     
-    func loadImage(_ image: Data) -> Observable<Network> {
+    func loadImage(_ image: Data) -> Observable<(ImageModel?, Network)> {
         return provider.rx.request(.loadImage(image))
             .filterSuccessfulStatusCodes()
             .asObservable()
-            .map { _ -> Network in
-                return (.success)
-            }.catchError { [unowned self] in return .just(self.setNetworkError($0)) }
+            .map(ImageModel.self)
+            .map{ return ($0, .success)}
+            .catchError{ _ in return .just((nil, .fail))}
     }
     
     func loadPost() -> Observable<(MainModel?,Network)> {
