@@ -50,7 +50,7 @@ class SignUpViewModel: ViewModelType {
             }).disposed(by: self.disposeBag)
         }).disposed(by: disposeBag)
         
-        input.duplicateTap.asObservable().withLatestFrom(info).subscribe(onNext: { [weak self] _, email, _ in
+        input.duplicateTap.asObservable().withLatestFrom(input.email).subscribe(onNext: { [weak self] email in
             guard let self = self else { return }
             api.checkEmail(email).subscribe(onNext: { response in
                 switch response {
