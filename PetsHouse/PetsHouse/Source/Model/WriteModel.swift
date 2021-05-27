@@ -14,3 +14,7 @@ struct Write: Codable {
     let mediaId: String
     let area: String
 }
+
+struct Image: Codable {
+    let media: String
+}
