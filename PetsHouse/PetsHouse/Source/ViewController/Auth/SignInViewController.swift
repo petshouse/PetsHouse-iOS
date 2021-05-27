@@ -40,7 +40,6 @@ class SignInViewController: UIViewController {
     private let passwordTxtField = UITextField().then {
         $0.placeholder = "password"
         $0.font = UIFont(name: "BMJUA", size: 15)
-        $0.autocapitalizationType = .none
     }
     private let signInBtn = UIButton().then {
         $0.backgroundColor = .mainColor
@@ -94,8 +93,7 @@ class SignInViewController: UIViewController {
         }).disposed(by: disposeBag)
         
         passwordTxtField.isSecureTextEntry = true
-        emailTxtField.underLine()
-        passwordTxtField.underLine()
+
     }
     
     
