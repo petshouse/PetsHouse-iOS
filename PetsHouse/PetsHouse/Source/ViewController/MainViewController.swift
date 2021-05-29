@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
     private let viewModel = MainViewModel()
     
     private let loadData = BehaviorRelay<Void>(value: ())
-//    private let loadImage = BehaviorRelay<Data>(value: Data)
+    private let loadImage = BehaviorRelay<Data>(value: Data())
     var selectIndexPath = PublishRelay<Int>()
     
     @IBOutlet weak var sequencePicker: UIPickerView!
@@ -59,7 +59,8 @@ class MainViewController: UIViewController {
 
     
     func bindViewModel() {
-        let input = MainViewModel.Input(loadData: loadData.asSignal(onErrorJustReturn: ()))
+        let input = MainViewModel.Input(loadData: loadData.asSignal(onErrorJustReturn: ()),
+                                        loadImage: loadImage.asSignal(onErrorJustReturn: Data()))
         let output = viewModel.transform(input: input)
         
         output.loadData.bind(to: tableView.rx.items(cellIdentifier: "mainCell", cellType: MainCell.self)) { row, element, cell in
