@@ -69,7 +69,7 @@ class Service {
             .catchError{ _ in return .just((nil, .fail))}
     }
     
-    func loadImage(_ image: Data) -> Observable<(ImageModel?, Network)> {
+    func loadImage(_ image: String) -> Observable<(ImageModel?, Network)> {
         return provider.rx.request(.loadImage(image))
             .filterSuccessfulStatusCodes()
             .asObservable()

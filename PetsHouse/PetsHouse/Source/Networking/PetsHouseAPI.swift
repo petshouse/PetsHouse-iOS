@@ -15,7 +15,7 @@ enum PetsHouseAPI {
     case emailSend(_ email: String)
     case verification(_ code: String, _ email: String)
     case uploadImage(_ image: Data?)
-    case loadImage(_ image: Data?)
+    case loadImage(_ image: String)
     case loadPost
     case writePost(_ title: String, _ description: String, _ mediaId: String, _ area: String)
 }
@@ -74,8 +74,8 @@ extension PetsHouseAPI: TargetType {
             return .requestParameters(parameters: ["email": email], encoding: JSONEncoding.prettyPrinted)
         case .uploadImage(let image):
             return .uploadMultipart([Moya.MultipartFormData(provider: .data(image ?? Data()), name: "image", fileName: "image.jpg", mimeType: "image/jpg")])
-        case .loadImage(let image):
-            return .uploadMultipart([Moya.MultipartFormData(provider: .data(image ?? Data()), name: "image", fileName: "image.jpg", mimeType: "image/jpg")])
+//        case .loadImage(let image):
+//            return .uploadMultipart([Moya.MultipartFormData(provider: .data(image ?? Data()), name: "image", fileName: "image.jpg", mimeType: "image/jpg")])
         case .writePost(let title, let description, let mediaId, let area):
             return .requestParameters(parameters: ["title": title, "description": description, "mediaId": mediaId, "area": area], encoding: JSONEncoding.prettyPrinted)
 
