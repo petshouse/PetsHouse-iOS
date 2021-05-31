@@ -34,37 +34,27 @@ class WriteViewModel: ViewModelType {
         let isEnable = info.map { !$0.0.isEmpty }
         let result = PublishSubject<String>()
         let selectImage = PublishSubject<String>()
-        
-        input.selectImage.asObservable().subscribe(onNext: { [weak self] media in
-            guard let self = self else { return }
-            api.uploadImage(media).subscribe(onNext: { _, response in
-                switch response {
-                case .ok:
-                    result.onCompleted()
-                case .forbidden:
-                    result.onNext("forbidden")
-                case .preconditionFailed:
-                    result.onNext("preconditionFailed")
-                default:
-                    print("default")
-                }
-            }).disposed(by: self.disposeBag)
-        }).disposed(by: disposeBag)
 
         input.doneTap.asObservable().withLatestFrom(info).subscribe(onNext: { [weak self] title, post,media, area in
             guard let self = self else { return }
             api.uploadImage(media).subscribe(onNext: { data, response  in
+                print(response)
                 switch response {
                 case .ok:
                     result.onCompleted()
+                    print("upload image ok")
                     api.writePost(title, post, data?.media ?? " ", area).subscribe(onNext: { _, response in
+//                        print(response)
                         switch response {
                         case .ok:
                             result.onCompleted()
+                            print("ok")
                         case .forbidden:
                             result.onNext("실패")
+                            print("forbidden")
                         case .preconditionFailed:
                             result.onNext("preconditionFailed")
+                            print("predi")
                         default:
                             result.onNext("write default")
                         }
