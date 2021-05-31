@@ -32,8 +32,6 @@ class WriteViewController: UIViewController {
     @IBOutlet weak var cameraLbl: UILabel!
     @IBOutlet weak var postBtn: UIBarButtonItem!
     
-    let areaDropDown = DropDown()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,11 +49,12 @@ class WriteViewController: UIViewController {
                                          doneTap: postBtn.rx.tap.asDriver())
         let output = viewModel.transform(input: input)
         
-        output.result.emit(onCompleted: { [unowned self] in
-            self.pushVC("mainVC")
-        }).disposed(by: disposeBag)
         output.isEnable.drive(postBtn.rx.isEnabled).disposed(by: disposeBag)
-
+        
+        output.result.emit(onCompleted: { [unowned self] in
+            self.navigationController?.popViewController(animated: true)
+            self.alert("성공", "글쓰기 성공")
+        }).disposed(by: disposeBag)
     }
     
     func setUI() {
