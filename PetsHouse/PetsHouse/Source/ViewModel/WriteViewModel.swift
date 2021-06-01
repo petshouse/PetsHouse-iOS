@@ -44,17 +44,13 @@ class WriteViewModel: ViewModelType {
                     result.onCompleted()
                     print("upload image ok")
                     api.writePost(title, post, data?.media ?? " ", area).subscribe(onNext: { _, response in
-//                        print(response)
                         switch response {
                         case .ok:
                             result.onCompleted()
-                            print("ok")
                         case .forbidden:
                             result.onNext("실패")
-                            print("forbidden")
                         case .preconditionFailed:
                             result.onNext("preconditionFailed")
-                            print("predi")
                         default:
                             result.onNext("write default")
                         }
