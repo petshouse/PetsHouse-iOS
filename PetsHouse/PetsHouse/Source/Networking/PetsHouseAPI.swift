@@ -74,8 +74,8 @@ extension PetsHouseAPI: TargetType {
             return .requestParameters(parameters: ["email": email], encoding: JSONEncoding.prettyPrinted)
         case .uploadImage(let image):
             return .uploadMultipart([Moya.MultipartFormData(provider: .data(image ?? Data()), name: "image", fileName: "image.jpg", mimeType: "image/jpg")])
-//        case .loadImage(let image):
-//            return .uploadMultipart([Moya.MultipartFormData(provider: .data(image ?? Data()), name: "image", fileName: "image.jpg", mimeType: "image/jpg")])
+        case .loadImage(let image):
+            return .requestParameters(parameters: ["image": image], encoding: JSONEncoding.prettyPrinted)
         case .writePost(let title, let description, let mediaId, let area):
             return .requestParameters(parameters: ["title": title, "description": description, "mediaId": mediaId, "area": area], encoding: JSONEncoding.prettyPrinted)
 
