@@ -26,7 +26,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var writeBtn: UIBarButtonItem!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -35,6 +34,14 @@ class MainViewController: UIViewController {
         bindViewModel()
         picker()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        loadData.accept(())
+        tableView.reloadData()
+    }
+    
 
     func picker() {
         Observable.just(["최신순", "우선순위"])
@@ -64,7 +71,6 @@ class MainViewController: UIViewController {
         let output = viewModel.transform(input: input)
         
         output.loadData.bind(to: tableView.rx.items(cellIdentifier: "mainCell", cellType: MainCell.self)) { row, element, cell in
-//            cell.nameLbl.text = element.nickname
             cell.titleTxtField.text = element.title
             cell.contentTxtView.text = element.description
             cell.postImage.image = UIImage(named: element.mediaName)
@@ -84,8 +90,6 @@ class MainViewController: UIViewController {
         imageView.image = image
         navigationItem.titleView = imageView
         self.navigationItem.setHidesBackButton(true, animated: true)
-
-        
 
         let cell = MainCell()
         cell.moreBtn.rx.tap.subscribe(onNext: { _ in
