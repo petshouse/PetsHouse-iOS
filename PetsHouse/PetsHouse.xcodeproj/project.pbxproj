@@ -39,6 +39,7 @@
 		9F88CEF62623E7E90081BB5C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F88CEF52623E7E90081BB5C /* MainViewController.swift */; };
 		9F88CF2A2625A0DA0081BB5C /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F88CF292625A0D90081BB5C /* MainViewModel.swift */; };
 		9F8C16E7260B02C300F8D17B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C16E6260B02C300F8D17B /* SignInViewController.swift */; };
+		9FA6A0B42754643600D304D3 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6A0B32754643600D304D3 /* UIButton.swift */; };
 		9FE4A0C92608DEA400D668F0 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4A0C82608DEA400D668F0 /* ViewModelType.swift */; };
 		9FE4A0E02609CD6500D668F0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4A0DF2609CD6500D668F0 /* SignUpViewController.swift */; };
 		9FE4A0E8260A014F00D668F0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE4A0E7260A014F00D668F0 /* UIColor.swift */; };
@@ -79,6 +80,7 @@
 		9F88CEF52623E7E90081BB5C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9F88CF292625A0D90081BB5C /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		9F8C16E6260B02C300F8D17B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		9FA6A0B32754643600D304D3 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		9FE4A0C82608DEA400D668F0 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		9FE4A0DF2609CD6500D668F0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9FE4A0E7260A014F00D668F0 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 				9FE4A0E7260A014F00D668F0 /* UIColor.swift */,
 				9F879CBA2619A24A006FD55E /* UIViewController.swift */,
 				9F6BABA22648BCF800728C05 /* UITextField.swift */,
+				9FA6A0B32754643600D304D3 /* UIButton.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				9F88CEF32623DE5A0081BB5C /* WriteModel.swift in Sources */,
 				9F6BABA32648BCF800728C05 /* UITextField.swift in Sources */,
 				9F88CEDC261FF9CE0081BB5C /* SignInViewModel.swift in Sources */,
+				9FA6A0B42754643600D304D3 /* UIButton.swift in Sources */,
 				9FE4A0E02609CD6500D668F0 /* SignUpViewController.swift in Sources */,
 				9FE4A0E8260A014F00D668F0 /* UIColor.swift in Sources */,
 				9F8311E6263117AB005B484E /* SendEmailViewModel.swift in Sources */,
