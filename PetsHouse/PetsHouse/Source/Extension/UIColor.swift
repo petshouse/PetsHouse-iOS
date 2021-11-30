@@ -19,4 +19,12 @@ extension UIColor {
     static var subColor: UIColor {
         return rgb(red: 255, green: 157, blue: 140, alpha: 1)
     }
+    
+    static var textFieldBack: UIColor {
+        return rgb(red: 244, green: 244, blue: 244, alpha: 1)
+    }
+    
+    static var appGray: UIColor {
+        return rgb(red: 65, green: 65, blue: 65, alpha: 1)
+    }
 }
