@@ -66,7 +66,10 @@ class Service {
             .asObservable()
             .map(Image.self)
             .map{ return ($0, .ok)}
-            .catchError{ _ in return .just((nil, .fail))}
+            .catchError { error in
+                print(error)
+                return .just((nil, .fail))
+            }
     }
     
     func loadImage(_ image: String) -> Observable<(ImageModel?, Network)> {
@@ -75,7 +78,9 @@ class Service {
             .asObservable()
             .map(ImageModel.self)
             .map{ return ($0, .success)}
-            .catchError{ _ in return .just((nil, .fail))}
+            .catchError{ error in
+                print(error)
+                return .just((nil, .fail))}
     }
     
     func loadPost() -> Observable<(MainModel?,Network)> {
@@ -84,7 +89,10 @@ class Service {
             .asObservable()
             .map(MainModel.self)
             .map { return ($0, .success)}
-            .catchError{ _ in return .just((nil, .fail))}
+            .catchError{ error in
+                print(error)
+                return .just((nil, .fail))
+            }
     }
     
     func writePost(_ title: String, _ description: String, _ mediaId: String, _ area: String) -> Observable<(Write?, Network)> {
@@ -93,7 +101,9 @@ class Service {
             .asObservable()
             .map(Write.self)
             .map { return ($0, .ok)}
-            .catchError{ _ in return .just((nil, .fail))}
+            .catchError{ error in
+                print(error)
+                return .just((nil, .fail))}
     }
     
     func setNetworkError(_ error: Error) -> Network {
